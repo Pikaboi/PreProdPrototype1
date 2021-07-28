@@ -23,5 +23,6 @@ public class Fireball : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         m_direction = direction;
+        Debug.Log(m_direction);
     }
 }

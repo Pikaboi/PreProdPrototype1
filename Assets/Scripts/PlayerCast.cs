@@ -18,7 +18,10 @@ public class PlayerCast : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             GameObject newFireball = Instantiate(Fireball, transform.position, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetDirection(new Vector3(transform.right.x, Camera.transform.forward.z, transform.forward.z));
+
+            newFireball.GetComponent<Fireball>().SetDirection(Camera.transform.forward);
         }
+
+        //Debug.DrawLine(Camera.transform.position, Camera.transform.position + Camera.transform.forward * 10, Color.blue);
     }
 }
