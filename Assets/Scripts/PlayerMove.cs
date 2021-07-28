@@ -27,14 +27,14 @@ public class PlayerMove : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
         float horizontal = Input.GetAxisRaw("Mouse X") * m_Sensitivity * Time.deltaTime;
 
-        //To connect it too the velocity
-        Vector3 m_movement = new Vector3(x, 0.0f, z).normalized;
-
         m_RotationY -= horizontal;
 
         transform.localRotation = Quaternion.Euler(new Vector3(0.0f, m_RotationY, 0.0f));
 
+        //To connect it too the velocity
+        Vector3 m_movement = transform.right * x + transform.forward * z;
+
         //So we keep gravity
-        m_rb.velocity = new Vector3((m_movement * m_Speed).x, m_rb.velocity.y, (m_movement * m_Speed).z);
+        m_rb.velocity = new Vector3(m_movement.normalized.x * m_Speed, m_rb.velocity.y, m_movement.normalized.z * m_Speed);
     }
 }
