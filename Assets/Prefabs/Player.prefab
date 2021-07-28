@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
     type: 3}
+  LobShot: {fileID: 5144598363566581514, guid: 5abd78a7aab68ec4284577e3536c3b6d, type: 3}
   Camera: {fileID: 7159063378308968977}
 --- !u!1 &7159063378308968977
 GameObject:

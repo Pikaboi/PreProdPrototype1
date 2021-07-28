@@ -8,6 +8,8 @@ public class Fireball : MonoBehaviour
     private Vector3 m_direction;
     private Rigidbody m_rb;
 
+    private float lifeTimer = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,13 @@ public class Fireball : MonoBehaviour
     void FixedUpdate()
     {
         m_rb.MovePosition(transform.position + m_direction * Time.deltaTime * m_Speed);
+
+        lifeTimer -= Time.deltaTime;
+
+        if(lifeTimer < 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetDirection(Vector3 direction)
