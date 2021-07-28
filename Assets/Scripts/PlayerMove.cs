@@ -8,9 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody m_rb;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_Sensitivity;
-
     private float m_RotationY;
-
     private Vector3 m_direction;
 
     // Start is called before the first frame update

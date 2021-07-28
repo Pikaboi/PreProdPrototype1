@@ -5,10 +5,9 @@ using UnityEngine;
 public class FPSCam : MonoBehaviour
 {
     [SerializeField] private GameObject m_follow;
-    [SerializeField] private Vector3 m_offset;
     [SerializeField] private float m_sensitivity;
-
-    [SerializeField] private float m_rotationX = 0f;
+    private Vector3 m_offset;
+    private float m_rotationX = 0f;
 
     // Start is called before the first frame update
     void Start()
