@@ -10,6 +10,12 @@ public class Fireball : MonoBehaviour
 
     private float lifeTimer = 10.0f;
 
+    private bool m_charging = false;
+
+    private float scaleSize = 0.0f;
+
+    private GameObject m_follow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +25,28 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        m_rb.MovePosition(transform.position + m_direction * Time.deltaTime * m_Speed);
-
-        lifeTimer -= Time.deltaTime;
-
-        if(lifeTimer < 0.0f)
+        if (m_charging)
         {
-            Destroy(gameObject);
+            //Nothing yet
+        }
+        else
+        {
+            m_rb.MovePosition(transform.position + m_direction * Time.deltaTime * m_Speed);
+
+            lifeTimer -= Time.deltaTime;
+
+            if (lifeTimer < 0.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (m_charging)
+        {
+
         }
     }
 
@@ -33,5 +54,10 @@ public class Fireball : MonoBehaviour
     {
         m_direction = direction;
         Debug.Log(m_direction);
+    }
+
+    public void setFollow(GameObject _follow)
+    {
+        m_follow = _follow;
     }
 }
