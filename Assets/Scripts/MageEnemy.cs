@@ -13,6 +13,7 @@ public class MageEnemy : Enemy
         BACKWARDS
     }
 
+    [SerializeField] State CurrentState;
 
     // Start is called before the first frame update
     override public void Start()
@@ -24,6 +25,28 @@ public class MageEnemy : Enemy
     override public void Update()
     {
         //Control all the States
+        switch (CurrentState)
+        {
+            case State.IDLE:
+                Idle();
+                break;
+            case State.ATTACK:
+                Attack();
+                break;
+            case State.DEFENSE:
+                Defend();
+                break;
+            case State.FINISHER:
+                LargeAttack();
+                break;
+            case State.BACKWARDS:
+                MoveBack();
+                break;
+            default:
+                //If something odd happens, default to Idle
+                Idle();
+                break;
+        }
     }
 
     //Move the enemy back to keep distance from player
