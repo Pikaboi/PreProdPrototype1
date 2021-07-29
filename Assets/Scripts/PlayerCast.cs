@@ -27,6 +27,11 @@ public class PlayerCast : MonoBehaviour
     //Reference to the Wall that has been spawned
     private GameObject CurrentWall;
 
+    //Charge Related Values
+    private float m_FireballSize = 0.25f;
+    private float m_lobSpeed = 4.0f;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +45,11 @@ public class PlayerCast : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpellCycle();
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            SpellCharge();
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -57,6 +67,17 @@ public class PlayerCast : MonoBehaviour
         }
     }
 
+    void SpellCharge()
+    {
+        m_FireballSize += Time.deltaTime * 0.1f;
+
+        m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
+
+        m_lobSpeed += Time.deltaTime;
+
+        m_lobSpeed = Mathf.Min(m_lobSpeed, 10.0f);
+    }
+
     void SpellActivate()
     {
         //Means we have all spells on one button
@@ -65,12 +86,13 @@ public class PlayerCast : MonoBehaviour
             case SpellType.Fireball:
 
                 GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
-                newFireball.GetComponent<Fireball>().SetDirection(Camera.transform.forward);
+                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize);
 
                 break;
             case SpellType.LobShot:
 
                 GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
+                //newLobShot.GetComponent<LobShot>().Throw(m_lobSpeed);
 
                 break;
             case SpellType.Healing:
@@ -80,6 +102,9 @@ public class PlayerCast : MonoBehaviour
                 //Prevents anything bad happening
                 break;
         }
+
+        m_FireballSize = 0.25f;
+        m_lobSpeed = 4.0f;
     }
 
     void SpellCycle()

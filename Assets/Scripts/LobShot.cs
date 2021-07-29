@@ -13,7 +13,6 @@ public class LobShot : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-
         m_rb.AddForce(new Vector3(0.0f, m_Height, 0.0f), ForceMode.Impulse);
         m_rb.AddForce(transform.forward * m_Speed, ForceMode.Impulse);
     }

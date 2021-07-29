@@ -32,9 +32,10 @@ public class Fireball : MonoBehaviour
     }
 
     //Allows to set its direction to where we are facing
-    public void SetDirection(Vector3 direction)
+    public void SetValues(Vector3 direction, float _size)
     {
         m_direction = direction;
+        transform.localScale = new Vector3(_size, _size, _size);
     }
 
     //Destroy the shot on wall / enemy collision
