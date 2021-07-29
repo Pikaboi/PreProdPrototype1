@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1500568765}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,9 @@ MonoBehaviour:
     type: 3}
   LobShot: {fileID: 5144598363566581514, guid: 5abd78a7aab68ec4284577e3536c3b6d, type: 3}
   Camera: {fileID: 7159063378308968977}
+  Wall: {fileID: 4546654712033546292, guid: 4d5fcdf773f322040aeea3b6c30c736f, type: 3}
+  text: {fileID: 0}
+  currentSpell: 0
 --- !u!1 &7159063378308968977
 GameObject:
   m_ObjectHideFlags: 0

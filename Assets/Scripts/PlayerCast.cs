@@ -8,6 +8,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private GameObject Fireball;
     [SerializeField] private GameObject LobShot;
     [SerializeField] private GameObject Camera;
+    [SerializeField] private GameObject Wall;
 
     [SerializeField] private TMPro.TMP_Text text;
 
@@ -21,6 +22,8 @@ public class PlayerCast : MonoBehaviour
     private int SpellLength = 2;
 
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
+
+    private GameObject CurrentWall;
 
     // Start is called before the first frame update
     void Start()
@@ -36,49 +39,18 @@ public class PlayerCast : MonoBehaviour
             SpellCycle();
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            
-        }
-
         if (Input.GetMouseButtonUp(1))
         {
             SpellActivate();
         }
-    }
 
-    void SpellInstantiate()
-    {
-        switch (currentSpell)
+        if (Input.GetMouseButton(0))
         {
-            case SpellType.Fireball:
-
-                GameObject newFireball = Instantiate(Fireball, transform.position, transform.rotation);
-                newFireball.GetComponent<Fireball>().SetDirection(Camera.transform.forward);
-
-                break;
-            case SpellType.LobShot:
-
-                GameObject newLobShot = Instantiate(LobShot, transform.position, transform.rotation);
-
-                break;
-            case SpellType.Healing:
-                
-                break;
-            default:
-                //Prevents anything bad happening
-                break;
+            if(CurrentWall == null)
+            {
+                CurrentWall = Instantiate(Wall, transform.position + transform.forward, transform.rotation);
+            }
         }
-    }
-
-    void SpellCharge()
-    {
-
     }
 
     void SpellActivate()
