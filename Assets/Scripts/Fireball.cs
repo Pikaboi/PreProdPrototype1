@@ -42,9 +42,9 @@ public class Fireball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("ah");
-        //if (collision.gameObject.tag != "Player")
-        //{
+        if (collision.gameObject.tag != "Player")
+        {
             Destroy(gameObject);
-        //}
+        }
     }
 }
