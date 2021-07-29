@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallSpell : MonoBehaviour
 {
-    [SerializeField] private float Timer = 20.0f;
+    [SerializeField] private float Timer = 1.0f;
 
 
     // Start is called before the first frame update

@@ -46,9 +46,10 @@ public class PlayerCast : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            //You wont pull it up until a wall has been removed
             if(CurrentWall == null)
             {
-                CurrentWall = Instantiate(Wall, transform.position + transform.forward, transform.rotation);
+                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 2, transform.rotation.normalized);
             }
         }
     }
