@@ -23,4 +23,6 @@ public class WallSpell : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //Add later code that weakens the barrier when it is hit
 }

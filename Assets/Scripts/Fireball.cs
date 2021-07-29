@@ -19,18 +19,32 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Moves forward
         m_rb.MovePosition(transform.position + m_direction * Time.deltaTime * m_Speed);
 
         lifeTimer -= Time.deltaTime;
 
+        //Despawns when time is up
         if(lifeTimer < 0.0f)
         {
             Destroy(gameObject);
         }
     }
 
+    //Allows to set its direction to where we are facing
     public void SetDirection(Vector3 direction)
     {
         m_direction = direction;
+    }
+
+    //Destroy the shot on wall / enemy collision
+    //If an enemy deal the damage
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("ah");
+        //if (collision.gameObject.tag != "Player")
+        //{
+            Destroy(gameObject);
+        //}
     }
 }

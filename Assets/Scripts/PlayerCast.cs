@@ -5,24 +5,26 @@ using UnityEngine.UI;
 
 public class PlayerCast : MonoBehaviour
 {
+    //References to projectile prefabs
     [SerializeField] private GameObject Fireball;
     [SerializeField] private GameObject LobShot;
     [SerializeField] private GameObject Camera;
     [SerializeField] private GameObject Wall;
 
+    //Debug
     [SerializeField] private TMPro.TMP_Text text;
 
+    //Spell Enum
     private enum SpellType
     {
         Fireball,
         LobShot,
         Healing
     }
-
     private int SpellLength = 2;
-
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
 
+    //Reference to the Wall that has been spawned
     private GameObject CurrentWall;
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class PlayerCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Show button presses
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpellCycle();

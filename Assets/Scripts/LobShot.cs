@@ -24,6 +24,8 @@ public class LobShot : MonoBehaviour
         
     }*/
 
+    //Destroy the shot on wall / enemy collision
+    //This will start the explosion before it is destroyed
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != "Player")
