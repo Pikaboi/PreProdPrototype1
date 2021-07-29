@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class MageEnemy : Enemy
 {   
+    //the states the enemy can be in
     public enum State
     {
         IDLE,
@@ -14,10 +15,15 @@ public class MageEnemy : Enemy
         BACKWARDS
     }
 
+    //The State the enemy is currently in
     [SerializeField] State CurrentState;
 
+    //idle movement modifiers
     int m_IdleMove = 1;
+    float m_idleTimer = 4.0f;
 
+    //Attack timer
+    float m_AttackTimer = 3.0f;
 
     // Start is called before the first frame update
     override public void Start()
@@ -29,7 +35,13 @@ public class MageEnemy : Enemy
     // Update is called once per frame
     override public void Update()
     {
+        //Look at the player
+        //May change to a vision mechanic?
         transform.LookAt(m_Player.transform.position);
+
+        //Decrease Attack Timer
+
+
         //Control all the States
         switch (CurrentState)
         {
@@ -60,6 +72,7 @@ public class MageEnemy : Enemy
     {
         m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
 
+        //return to idle once its at a safe distance
         if(Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
         {
             CurrentState = State.IDLE;
@@ -89,14 +102,26 @@ public class MageEnemy : Enemy
     //Idling, strafing around player
     void Idle()
     {
+        //Check if player is too close
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 10.0f)
         {
             CurrentState = State.BACKWARDS;
         }
 
+        //Move Player
         Vector3 playerdis = transform.position - m_Player.transform.position;
         Vector3 dir = Vector3.Cross(playerdis, Vector3.up);
-        m_Agent.SetDestination((transform.position + dir) * (m_IdleMove * m_Speed * Time.deltaTime));
+        m_Agent.SetDestination((transform.position + dir) * (m_IdleMove));
+
+        //Change up movement when timer ends
+        m_idleTimer -= Time.deltaTime;
+
+        if(m_idleTimer < 0)
+        {
+            IdleMove();
+            m_idleTimer = 4.0f;
+        }
+
     }
 
     void IdleMove()
@@ -111,6 +136,17 @@ public class MageEnemy : Enemy
         } else
         {
             m_IdleMove = -1;
+        }
+    }
+
+    void AttackCooldown()
+    {
+        m_AttackTimer -= Time.deltaTime;
+
+        if(m_AttackTimer < 0.0f)
+        {
+            CurrentState = State.ATTACK;
+            m_AttackTimer = Random.Range(1.0f, 6.0f);
         }
     }
 }
