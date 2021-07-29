@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Mouse X") * m_Sensitivity * Time.deltaTime;
 
         //Rotation
-        m_RotationY -= horizontal;
+        m_RotationY += horizontal;
 
         transform.localRotation = Quaternion.Euler(new Vector3(0.0f, m_RotationY, 0.0f));
 

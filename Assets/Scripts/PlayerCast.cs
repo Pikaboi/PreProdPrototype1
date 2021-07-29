@@ -49,7 +49,7 @@ public class PlayerCast : MonoBehaviour
             //You wont pull it up until a wall has been removed
             if(CurrentWall == null)
             {
-                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 2, transform.rotation.normalized);
+                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5, transform.rotation.normalized);
             }
         }
     }
