@@ -64,13 +64,13 @@ public class PlayerCast : MonoBehaviour
         {
             case SpellType.Fireball:
 
-                GameObject newFireball = Instantiate(Fireball, transform.position, transform.rotation);
+                GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
                 newFireball.GetComponent<Fireball>().SetDirection(Camera.transform.forward);
 
                 break;
             case SpellType.LobShot:
 
-                GameObject newLobShot = Instantiate(LobShot, transform.position, transform.rotation);
+                GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
 
                 break;
             case SpellType.Healing:
