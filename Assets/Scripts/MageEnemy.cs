@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MageEnemy : Enemy
 {   
@@ -18,12 +19,14 @@ public class MageEnemy : Enemy
     // Start is called before the first frame update
     override public void Start()
     {
-        
+        m_Player = GameObject.FindGameObjectWithTag("Player");
+        m_Agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     override public void Update()
     {
+        transform.LookAt(m_Player.transform.position);
         //Control all the States
         switch (CurrentState)
         {
@@ -52,7 +55,12 @@ public class MageEnemy : Enemy
     //Move the enemy back to keep distance from player
     void MoveBack()
     {
+        m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
 
+        if(Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
+        {
+            CurrentState = State.IDLE;
+        }
     }
 
     //Fire a Projectile at a player
@@ -77,6 +85,11 @@ public class MageEnemy : Enemy
     //Idling, strafing around player
     void Idle()
     {
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < 10.0f)
+        {
+            CurrentState = State.BACKWARDS;
+        }
 
+        m_Agent.Move(transform.right * m_Speed * Time.deltaTime);
     }
 }
