@@ -69,11 +69,11 @@ public class PlayerCast : MonoBehaviour
 
     void SpellCharge()
     {
-        m_FireballSize += Time.deltaTime * 0.1f;
+        m_FireballSize += Time.deltaTime;
 
         m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
 
-        m_lobSpeed += Time.deltaTime;
+        m_lobSpeed += Time.deltaTime * 5.0f;
 
         m_lobSpeed = Mathf.Min(m_lobSpeed, 10.0f);
     }
@@ -92,7 +92,7 @@ public class PlayerCast : MonoBehaviour
             case SpellType.LobShot:
 
                 GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
-                //newLobShot.GetComponent<LobShot>().Throw(m_lobSpeed);
+                newLobShot.GetComponent<LobShot>().setSpeed(m_lobSpeed);
 
                 break;
             case SpellType.Healing:
