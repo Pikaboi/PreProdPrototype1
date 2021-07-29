@@ -16,6 +16,9 @@ public class MageEnemy : Enemy
 
     [SerializeField] State CurrentState;
 
+    int m_IdleMove = 1;
+
+
     // Start is called before the first frame update
     override public void Start()
     {
@@ -60,6 +63,7 @@ public class MageEnemy : Enemy
         if(Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
         {
             CurrentState = State.IDLE;
+            IdleMove();
         }
     }
 
@@ -90,6 +94,23 @@ public class MageEnemy : Enemy
             CurrentState = State.BACKWARDS;
         }
 
-        m_Agent.Move(transform.right * m_Speed * Time.deltaTime);
+        Vector3 playerdis = transform.position - m_Player.transform.position;
+        Vector3 dir = Vector3.Cross(playerdis, Vector3.up);
+        m_Agent.SetDestination((transform.position + dir) * (m_IdleMove * m_Speed * Time.deltaTime));
+    }
+
+    void IdleMove()
+    {
+        int rand = Random.Range(0, 2);
+
+        Debug.Log(rand);
+
+        if(rand == 0)
+        {
+            m_IdleMove = 1;
+        } else
+        {
+            m_IdleMove = -1;
+        }
     }
 }
