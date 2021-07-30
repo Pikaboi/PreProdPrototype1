@@ -18,7 +18,9 @@ public class DefenseCoolDownBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int cd = (int)m_Player.CurrentWall.GetComponent<WallSpell>().GetTimer();
-        text.text = cd.ToString();
+        if (m_Player.CurrentWall != null) {
+            int cd = (int)m_Player.CurrentWall.GetComponent<WallSpell>().GetTimer();
+            text.text = cd.ToString();
+        }
     }
 }
