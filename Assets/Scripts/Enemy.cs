@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int m_Health;
     public int m_Attack;
+    public int m_Defense;
     public float m_Speed;
 
     public NavMeshAgent m_Agent;
@@ -22,5 +23,10 @@ public class Enemy : MonoBehaviour
     virtual public void Update()
     {
         
+    }
+
+    virtual public void TakeDamage(int _might)
+    {
+        m_Health -= Mathf.Max(_might - m_Defense, 0);
     }
 }

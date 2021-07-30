@@ -30,7 +30,11 @@ public class PlayerCast : MonoBehaviour
     //Charge Related Values
     private float m_FireballSize = 0.25f;
     private float m_lobSpeed = 4.0f;
-    
+
+    //Player Stats
+    public int m_Health;
+    public int m_Attack;
+    public int m_Defense;
 
     // Start is called before the first frame update
     void Start()
@@ -86,13 +90,13 @@ public class PlayerCast : MonoBehaviour
             case SpellType.Fireball:
 
                 GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
-                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize);
+                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
                 break;
             case SpellType.LobShot:
 
                 GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
-                newLobShot.GetComponent<LobShot>().setSpeed(m_lobSpeed);
+                newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
                 break;
             case SpellType.Healing:
@@ -118,4 +122,10 @@ public class PlayerCast : MonoBehaviour
 
         text.text = currentSpell.ToString();
     }
+
+    public void TakeDamage(int _Might)
+    {
+        m_Health -= Mathf.Max(_Might - m_Defense, 0);
+    }
+
 }

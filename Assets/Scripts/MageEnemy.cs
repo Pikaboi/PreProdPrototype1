@@ -90,6 +90,11 @@ public class MageEnemy : Enemy
                 Idle();
                 break;
         }
+
+        if(m_Health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     //Move the enemy back to keep distance from player
@@ -111,7 +116,7 @@ public class MageEnemy : Enemy
         //uses the same code as player projectiles
         //Use set size instead
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f);
+        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
         m_AttackCount++;
 
@@ -133,7 +138,7 @@ public class MageEnemy : Enemy
         if(m_ChargeTimer < 0.0f)
         {
             GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(transform.forward, 2.0f);
+            newFireball.GetComponent<Fireball>().SetValues(transform.forward, 2.0f, "EnemyProjectile", m_Attack * 3);
             m_finisherReady = false;
 
             CurrentState = State.IDLE;

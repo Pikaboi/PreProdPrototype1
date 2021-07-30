@@ -11,6 +11,8 @@ public class LobShot : MonoBehaviour
     private bool m_released = false;
     private Rigidbody m_rb;
 
+    private int m_Might = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +32,10 @@ public class LobShot : MonoBehaviour
         }
     }
 
-    public void setSpeed(float _speed)
+    public void setValues(float _speed, string _tag, int _Might)
     {
+        gameObject.tag = _tag;
+        m_Might = _Might;
         m_Speed = _speed;
         m_released = true;
     }
@@ -40,6 +44,35 @@ public class LobShot : MonoBehaviour
     //This will start the explosion before it is destroyed
     private void OnCollisionEnter(Collision collision)
     {
+        //Check Radius of explosion
+        Collider[] hits = Physics.OverlapSphere(transform.position, 10.0f);
+
+
+        if (gameObject.tag == "EnemyProjectile")
+        {
+            //hurt player if in range
+
+            foreach(Collider hit in hits)
+            {
+                if(hit.gameObject.tag == "Player")
+                {
+                    hit.gameObject.GetComponent<PlayerCast>().TakeDamage(m_Might);
+                }
+            }
+        }
+
+        if (gameObject.tag == "PlayerProjectile")
+        {
+            //hurt enemy
+            foreach (Collider hit in hits)
+            {
+                if (hit.gameObject.tag == "Enemy")
+                {
+                    hit.gameObject.GetComponent<Enemy>().TakeDamage(m_Might);
+                }
+            }
+        }
+
         Destroy(gameObject);
     }
 }
