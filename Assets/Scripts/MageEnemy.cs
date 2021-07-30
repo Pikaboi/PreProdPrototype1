@@ -29,6 +29,7 @@ public class MageEnemy : Enemy
 
     //Attack timer
     float m_AttackTimer = 3.0f;
+    int m_AttackCount = 0;
 
     //Finisher Charge Up
     float m_ChargeTimer = 4.0f;
@@ -111,7 +112,16 @@ public class MageEnemy : Enemy
         //Use set size instead
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
         newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f);
-        CurrentState = State.IDLE;
+
+        m_AttackCount++;
+
+        if (m_AttackCount > 5)
+        {
+            CurrentState = State.IDLE;
+        } else
+        {
+            CurrentState = State.DEFENSE;
+        }
     }
 
     //Strong attack used at low health
