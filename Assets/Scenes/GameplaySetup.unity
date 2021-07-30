@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 42154856}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,8 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4186fd24a1085b84e9ca8f76acf4bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 10
-  m_Attack: 10
+  m_Health: 100
+  m_Attack: 12
+  m_Defense: 1
   m_Speed: 5
   m_Agent: {fileID: 0}
   m_Player: {fileID: 0}
@@ -10118,6 +10119,18 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 487168743}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_Attack
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_Health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_Defense
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496988, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_Name

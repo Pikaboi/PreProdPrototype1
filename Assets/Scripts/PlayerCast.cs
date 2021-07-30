@@ -90,7 +90,7 @@ public class PlayerCast : MonoBehaviour
             case SpellType.Fireball:
 
                 GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
-                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * m_FireballSize));
+                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
                 break;
             case SpellType.LobShot:
@@ -123,5 +123,9 @@ public class PlayerCast : MonoBehaviour
         text.text = currentSpell.ToString();
     }
 
+    public void TakeDamage(int _Might)
+    {
+        m_Health -= Mathf.Max(_Might - m_Defense, 0);
+    }
 
 }

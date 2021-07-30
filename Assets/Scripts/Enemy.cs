@@ -24,4 +24,9 @@ public class Enemy : MonoBehaviour
     {
         
     }
+
+    virtual public void TakeDamage(int _might)
+    {
+        m_Health -= Mathf.Max(_might - m_Defense, 0);
+    }
 }

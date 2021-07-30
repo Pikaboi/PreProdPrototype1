@@ -9,7 +9,7 @@ public class Fireball : MonoBehaviour
     private Rigidbody m_rb;
 
     private float lifeTimer = 10.0f;
-    private float m_Might = 0.0f;
+    private int m_Might = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,18 @@ public class Fireball : MonoBehaviour
     //If an enemy deal the damage
     private void OnCollisionEnter(Collision collision)
     {
+        if(gameObject.tag == "EnemyProjectile" && collision.gameObject.tag == "Player")
+        {
+            //hurt player
+            collision.gameObject.GetComponent<PlayerCast>().TakeDamage(m_Might);
+        }
+
+        if(gameObject.tag == "PlayerProjectile" && collision.gameObject.tag == "Enemy")
+        {
+            //hurt enemy
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(m_Might);
+        }
+
         Destroy(gameObject);
     }
 }
