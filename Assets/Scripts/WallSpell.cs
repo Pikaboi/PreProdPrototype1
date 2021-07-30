@@ -24,5 +24,13 @@ public class WallSpell : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "EnemyProjectile" || collision.gameObject.tag == "PlayerProjectile")
+        {
+            Timer -= 5.0f;
+        }
+    }
+
     //Add later code that weakens the barrier when it is hit
 }
