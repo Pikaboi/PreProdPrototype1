@@ -55,7 +55,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.DEFENSE || CurrentState != State.FINISHER)
+        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER)
         {
             AttackCooldown();
         }
@@ -98,7 +98,7 @@ public class MageEnemy : Enemy
         m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
 
         //return to idle once its at a safe distance
-        if(Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
+        if(Vector3.Distance(transform.position, m_Player.transform.position) > 11.0f)
         {
             CurrentState = State.IDLE;
             IdleMove();
@@ -115,12 +115,13 @@ public class MageEnemy : Enemy
 
         m_AttackCount++;
 
-        if (m_AttackCount > 5)
+        if (m_AttackCount < 5)
         {
             CurrentState = State.IDLE;
         } else
         {
             CurrentState = State.DEFENSE;
+            m_AttackCount = 0;
         }
     }
 
