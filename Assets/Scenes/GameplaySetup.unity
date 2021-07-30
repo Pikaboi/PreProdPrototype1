@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Speed: 5
   m_Agent: {fileID: 0}
   m_Player: {fileID: 0}
+  m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
+    type: 3}
   CurrentState: 0
 --- !u!1 &165651372
 GameObject:

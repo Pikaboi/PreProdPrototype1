@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class MageEnemy : Enemy
-{   
+{
+    [SerializeField] private GameObject m_enemyFireball;
+
     //the states the enemy can be in
     public enum State
     {
@@ -40,7 +42,12 @@ public class MageEnemy : Enemy
         transform.LookAt(m_Player.transform.position);
 
         //Decrease Attack Timer
-
+        //want it seperate too idling, and moving back
+        //Otherwise AI will be giga stupid
+        if (CurrentState != State.DEFENSE || CurrentState != State.FINISHER)
+        {
+            AttackCooldown();
+        }
 
         //Control all the States
         switch (CurrentState)
@@ -83,7 +90,11 @@ public class MageEnemy : Enemy
     //Fire a Projectile at a player
     void Attack()
     {
-
+        //uses the same code as player projectiles
+        //Use set size instead
+        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
+        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f);
+        CurrentState = State.IDLE;
     }
 
     //Strong attack used at low health

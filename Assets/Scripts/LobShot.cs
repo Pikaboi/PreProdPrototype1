@@ -40,9 +40,6 @@ public class LobShot : MonoBehaviour
     //This will start the explosion before it is destroyed
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag != "Player")
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
