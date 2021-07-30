@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int m_Health;
     public int m_Attack;
+    public int m_Defense;
     public float m_Speed;
 
     public NavMeshAgent m_Agent;

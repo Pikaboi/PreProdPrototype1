@@ -9,6 +9,7 @@ public class Fireball : MonoBehaviour
     private Rigidbody m_rb;
 
     private float lifeTimer = 10.0f;
+    private float m_Might = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +33,10 @@ public class Fireball : MonoBehaviour
     }
 
     //Allows to set its direction to where we are facing
-    public void SetValues(Vector3 direction, float _size)
+    public void SetValues(Vector3 direction, float _size, string _tag, int _Might)
     {
+        gameObject.tag = _tag;
+        m_Might = _Might;
         m_direction = direction;
         transform.localScale = new Vector3(_size, _size, _size);
     }
