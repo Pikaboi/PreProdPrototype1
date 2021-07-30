@@ -42,10 +42,6 @@ public class Fireball : MonoBehaviour
     //If an enemy deal the damage
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("ah");
-        if (collision.gameObject.tag != "Player")
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
