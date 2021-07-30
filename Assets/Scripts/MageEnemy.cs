@@ -137,7 +137,7 @@ public class MageEnemy : Enemy
 
         if(m_ChargeTimer < 0.0f)
         {
-            GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
+            GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
             newFireball.GetComponent<Fireball>().SetValues(transform.forward, 2.0f, "EnemyProjectile", m_Attack * 3);
             m_finisherReady = false;
 
