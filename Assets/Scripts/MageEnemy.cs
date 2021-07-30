@@ -24,14 +24,23 @@ public class MageEnemy : Enemy
     int m_IdleMove = 1;
     float m_idleTimer = 4.0f;
 
+    //Defense timer
+    float m_DefendTimer = 5.0f;
+
     //Attack timer
     float m_AttackTimer = 3.0f;
+
+    //Finisher Charge Up
+    float m_ChargeTimer = 4.0f;
+    int m_Maxhealth;
+    
 
     // Start is called before the first frame update
     override public void Start()
     {
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_Agent = GetComponent<NavMeshAgent>();
+        m_Maxhealth = m_Health;
     }
 
     // Update is called once per frame
@@ -48,6 +57,13 @@ public class MageEnemy : Enemy
         {
             AttackCooldown();
         }
+
+        if(m_Health <= m_Maxhealth / 2)
+        {
+            CurrentState = State.FINISHER;
+        }
+
+        Debug.Log(CurrentState);
 
         //Control all the States
         switch (CurrentState)
@@ -100,13 +116,25 @@ public class MageEnemy : Enemy
     //Strong attack used at low health
     void LargeAttack()
     {
+        m_ChargeTimer -= Time.deltaTime;
 
+        if(m_ChargeTimer < 0.0f)
+        {
+            GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
+            newFireball.GetComponent<Fireball>().SetValues(transform.forward, 2.0f);
+        }
     }
 
     //Defensive Movement, nullify attacks
     void Defend()
     {
+        m_DefendTimer -= Time.deltaTime;
 
+        if(m_DefendTimer < 0.0f)
+        {
+            m_DefendTimer = 5.0f;
+            CurrentState = State.IDLE;
+        }
     }
 
 
