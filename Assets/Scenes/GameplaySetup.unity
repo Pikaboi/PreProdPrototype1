@@ -1341,6 +1341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mannequin_Arms
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e52140af50a806419dbfb685cf504f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e52140af50a806419dbfb685cf504f8, type: 3}
 --- !u!43 &346680676
