@@ -35,6 +35,9 @@ public class Fireball : MonoBehaviour
     //Allows to set its direction to where we are facing
     public void SetValues(Vector3 direction, float _size, string _tag, int _Might)
     {
+        //We pass in a tag and its might (Casters Attack + Modifiers)
+        //This allows us to hold its strength
+        //And who it can hurt
         gameObject.tag = _tag;
         m_Might = _Might;
         m_direction = direction;

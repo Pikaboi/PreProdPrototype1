@@ -96,7 +96,7 @@ public class PlayerCast : MonoBehaviour
             case SpellType.LobShot:
 
                 GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
-                newLobShot.GetComponent<LobShot>().setSpeed(m_lobSpeed);
+                newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
                 break;
             case SpellType.Healing:
