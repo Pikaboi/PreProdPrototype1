@@ -29,6 +29,7 @@ public class MageEnemy : Enemy
 
     //Attack timer
     float m_AttackTimer = 3.0f;
+    int m_AttackCount = 0;
 
     //Finisher Charge Up
     float m_ChargeTimer = 4.0f;
@@ -54,7 +55,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.DEFENSE || CurrentState != State.FINISHER)
+        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER)
         {
             AttackCooldown();
         }
@@ -97,7 +98,7 @@ public class MageEnemy : Enemy
         m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
 
         //return to idle once its at a safe distance
-        if(Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
+        if(Vector3.Distance(transform.position, m_Player.transform.position) > 11.0f)
         {
             CurrentState = State.IDLE;
             IdleMove();
@@ -111,7 +112,17 @@ public class MageEnemy : Enemy
         //Use set size instead
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
         newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f);
-        CurrentState = State.IDLE;
+
+        m_AttackCount++;
+
+        if (m_AttackCount < 5)
+        {
+            CurrentState = State.IDLE;
+        } else
+        {
+            CurrentState = State.DEFENSE;
+            m_AttackCount = 0;
+        }
     }
 
     //Strong attack used at low health

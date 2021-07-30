@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public int m_Health;
-    public int m_Damage;
+    public int m_Attack;
     public float m_Speed;
 
     public NavMeshAgent m_Agent;
