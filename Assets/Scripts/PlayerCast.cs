@@ -36,6 +36,9 @@ public class PlayerCast : MonoBehaviour
     public int m_Attack;
     public int m_Defense;
 
+    //Spell Cooldowns
+    public float cooldown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,20 +48,24 @@ public class PlayerCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cooldown -= Time.deltaTime;
         //Show button presses
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpellCycle();
         }
 
-        if (Input.GetMouseButton(1))
+        if (cooldown < 0)
         {
-            SpellCharge();
-        }
+            if (Input.GetMouseButton(1))
+            {
+                SpellCharge();
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            SpellActivate();
+            if (Input.GetMouseButtonUp(1))
+            {
+                SpellActivate();
+            }
         }
 
         if (Input.GetMouseButton(0))
@@ -92,11 +99,15 @@ public class PlayerCast : MonoBehaviour
                 GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
                 newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
+                cooldown = 5.0f;
+
                 break;
             case SpellType.LobShot:
 
                 GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
                 newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
+
+                cooldown = 7.0f;
 
                 break;
             case SpellType.Healing:
