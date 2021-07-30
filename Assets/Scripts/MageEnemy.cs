@@ -33,6 +33,7 @@ public class MageEnemy : Enemy
     //Finisher Charge Up
     float m_ChargeTimer = 4.0f;
     int m_Maxhealth;
+    bool m_finisherReady = true;
     
 
     // Start is called before the first frame update
@@ -58,7 +59,7 @@ public class MageEnemy : Enemy
             AttackCooldown();
         }
 
-        if(m_Health <= m_Maxhealth / 2)
+        if(m_Health <= m_Maxhealth / 2 && m_finisherReady)
         {
             CurrentState = State.FINISHER;
         }
@@ -122,6 +123,9 @@ public class MageEnemy : Enemy
         {
             GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
             newFireball.GetComponent<Fireball>().SetValues(transform.forward, 2.0f);
+            m_finisherReady = false;
+
+            CurrentState = State.IDLE;
         }
     }
 
