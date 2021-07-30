@@ -25,7 +25,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
 
     //Reference to the Wall that has been spawned
-    private GameObject CurrentWall;
+    public GameObject CurrentWall;
 
     //Charge Related Values
     private float m_FireballSize = 0.25f;
@@ -33,6 +33,7 @@ public class PlayerCast : MonoBehaviour
 
     //Player Stats
     public int m_Health;
+    public int m_MaxHealth;
     public int m_Attack;
     public int m_Defense;
 

@@ -32,5 +32,10 @@ public class WallSpell : MonoBehaviour
         }
     }
 
+    public float GetTimer()
+    {
+        return Timer;
+    }
+
     //Add later code that weakens the barrier when it is hit
 }
