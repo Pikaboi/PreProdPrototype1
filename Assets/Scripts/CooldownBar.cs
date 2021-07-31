@@ -18,7 +18,20 @@ public class CooldownBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int cd = (int)m_Player.cooldown;
-        text.text = cd.ToString();
+        PlayerCast.SpellType spell =  m_Player.GetCurrentSpell();
+
+        switch (spell)
+        {
+            case PlayerCast.SpellType.Fireball:
+                float cd = Mathf.Round(m_Player.m_fbcooldown * 100.0f) / 100.0f;
+                text.text = cd.ToString();
+                break;
+            case PlayerCast.SpellType.LobShot:
+                float cd2 = Mathf.Round(m_Player.m_lscooldown * 100.0f) / 100.0f;
+                text.text = cd2.ToString();
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -18,7 +18,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private GameObject RightArm;
 
     //Spell Enum
-    private enum SpellType
+    public enum SpellType
     {
         Fireball,
         LobShot,
@@ -41,7 +41,8 @@ public class PlayerCast : MonoBehaviour
     public int m_Defense;
 
     //Spell Cooldowns
-    public float cooldown = 0;
+    public float m_fbcooldown = 0;
+    public float m_lscooldown = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -52,24 +53,22 @@ public class PlayerCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cooldown -= Time.deltaTime;
+        m_fbcooldown -= Time.deltaTime;
+        m_lscooldown -= Time.deltaTime;
         //Show button presses
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpellCycle();
         }
 
-        if (cooldown < 0)
+        if (Input.GetMouseButton(1))
         {
-            if (Input.GetMouseButton(1))
-            {
-                SpellCharge();
-            }
+            SpellCharge();
+        }
 
-            if (Input.GetMouseButtonUp(1))
-            {
-                SpellActivate();
-            }
+        if (Input.GetMouseButtonUp(1))
+        {
+            SpellActivate();
         }
 
         if (Input.GetMouseButton(0))
@@ -84,13 +83,20 @@ public class PlayerCast : MonoBehaviour
 
     void SpellCharge()
     {
-        m_FireballSize += Time.deltaTime * 2.0f;
+        if (m_fbcooldown < 0)
+        {
+            m_FireballSize += Time.deltaTime * 2.0f;
 
-        m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
+            m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
 
-        m_lobSpeed += Time.deltaTime * 5.0f;
+        }
 
-        m_lobSpeed = Mathf.Min(m_lobSpeed, 10.0f);
+        if (m_lscooldown < 0)
+        {
+            m_lobSpeed += Time.deltaTime * 5.0f;
+
+            m_lobSpeed = Mathf.Min(m_lobSpeed, 10.0f);
+        }
     }
 
     void SpellActivate()
@@ -100,19 +106,24 @@ public class PlayerCast : MonoBehaviour
         {
             case SpellType.Fireball:
 
-                GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
-                newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
+                if (m_fbcooldown < 0)
+                {
+                    GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
+                    newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
-                cooldown = 5.0f;
+                    m_fbcooldown = 1.0f;
+                }
 
                 break;
             case SpellType.LobShot:
 
-                GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
-                newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
+                if (m_lscooldown < 0)
+                {
+                    GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
+                    newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
-                cooldown = 7.0f;
-
+                    m_lscooldown = 5.0f;
+                }
                 break;
             case SpellType.Healing:
 
@@ -143,4 +154,8 @@ public class PlayerCast : MonoBehaviour
         m_Health -= Mathf.Max(_Might - m_Defense, 0);
     }
 
+    public SpellType GetCurrentSpell()
+    {
+        return currentSpell;
+    }
 }
