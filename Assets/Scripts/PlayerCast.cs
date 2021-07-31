@@ -84,7 +84,7 @@ public class PlayerCast : MonoBehaviour
 
     void SpellCharge()
     {
-        m_FireballSize += Time.deltaTime;
+        m_FireballSize += Time.deltaTime * 2.0f;
 
         m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
 
@@ -100,7 +100,7 @@ public class PlayerCast : MonoBehaviour
         {
             case SpellType.Fireball:
 
-                GameObject newFireball = Instantiate(Fireball, RightArm.transform.position, transform.rotation);
+                GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
                 newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
                 cooldown = 5.0f;
