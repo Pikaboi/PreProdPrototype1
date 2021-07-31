@@ -7,6 +7,7 @@ public class LobShot : MonoBehaviour
 
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_Height;
+    [SerializeField] private float m_Radius;
 
     private bool m_released = false;
     private Rigidbody m_rb;
@@ -45,7 +46,7 @@ public class LobShot : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Check Radius of explosion
-        Collider[] hits = Physics.OverlapSphere(transform.position, 10.0f);
+        Collider[] hits = Physics.OverlapSphere(transform.position, m_Radius);
 
 
         if (gameObject.tag == "EnemyProjectile")
