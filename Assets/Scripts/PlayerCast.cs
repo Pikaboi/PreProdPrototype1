@@ -14,6 +14,9 @@ public class PlayerCast : MonoBehaviour
     //Debug
     [SerializeField] private TMPro.TMP_Text text;
 
+    [SerializeField] private GameObject LeftArm;
+    [SerializeField] private GameObject RightArm;
+
     //Spell Enum
     private enum SpellType
     {
@@ -97,7 +100,7 @@ public class PlayerCast : MonoBehaviour
         {
             case SpellType.Fireball:
 
-                GameObject newFireball = Instantiate(Fireball, transform.position + transform.forward * 1.5f, transform.rotation);
+                GameObject newFireball = Instantiate(Fireball, RightArm.transform.position, transform.rotation);
                 newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
 
                 cooldown = 5.0f;
@@ -105,7 +108,7 @@ public class PlayerCast : MonoBehaviour
                 break;
             case SpellType.LobShot:
 
-                GameObject newLobShot = Instantiate(LobShot, transform.position + transform.forward * 1.5f, transform.rotation);
+                GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
                 newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
                 cooldown = 7.0f;
