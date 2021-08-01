@@ -65,8 +65,6 @@ public class MageEnemy : Enemy
             CurrentState = State.FINISHER;
         }
 
-        Debug.Log(CurrentState);
-
         //Control all the States
         switch (CurrentState)
         {
@@ -186,8 +184,6 @@ public class MageEnemy : Enemy
     void IdleMove()
     {
         int rand = Random.Range(0, 2);
-
-        Debug.Log(rand);
 
         if(rand == 0)
         {
