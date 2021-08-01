@@ -26,6 +26,9 @@ public class PlayerCast : MonoBehaviour
     }
     private int SpellLength = 2;
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
+    public int HealCount = 3;
+    private float HealingTimer = 5.0f;
+
 
     //Reference to the Wall that has been spawned
     public GameObject CurrentWall;
@@ -126,6 +129,7 @@ public class PlayerCast : MonoBehaviour
                 }
                 break;
             case SpellType.Healing:
+                HealCount--;
 
                 break;
             default:
