@@ -14,6 +14,11 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent m_Agent;
     public GameObject m_Player;
 
+    public SkinnedMeshRenderer[] renderers;
+    public Material damage;
+    public Material defaultMat;
+    public float resetMatTimer = 0.0f;
+
     public Slider m_HPBar;
 
     // Start is called before the first frame update
@@ -31,6 +36,24 @@ public class Enemy : MonoBehaviour
     virtual public void TakeDamage(int _might)
     {
         m_Health -= Mathf.Max(_might - m_Defense, 0);
+        foreach(SkinnedMeshRenderer r in renderers)
+        {
+            r.material = damage;
+        }
+        resetMatTimer = 0.5f;
+    }
+
+    public void ResetMaterials()
+    {
+        resetMatTimer -= Time.deltaTime;
+        
+        if(resetMatTimer < 0)
+        {
+            foreach (SkinnedMeshRenderer r in renderers)
+            {
+                r.material = defaultMat;
+            }
+        }
     }
 
     public void UpdateHPBar()
