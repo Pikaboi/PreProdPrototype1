@@ -43,11 +43,14 @@ public class MageEnemy : Enemy
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_Agent = GetComponent<NavMeshAgent>();
         m_Maxhealth = m_Health;
+        m_HPBar.maxValue = m_Maxhealth;
+        m_HPBar.value = m_Health;
     }
 
     // Update is called once per frame
     override public void Update()
     {
+        UpdateHPBar();
         //Look at the player
         //May change to a vision mechanic?
         transform.LookAt(m_Player.transform.position);

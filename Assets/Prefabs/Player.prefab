@@ -99,13 +99,16 @@ MonoBehaviour:
   Camera: {fileID: 7159063378308968977}
   Wall: {fileID: 4546654712033546292, guid: 4d5fcdf773f322040aeea3b6c30c736f, type: 3}
   text: {fileID: 0}
+  LeftArm: {fileID: 499189039877888649}
+  RightArm: {fileID: 8215332450808748656}
   currentSpell: 0
   CurrentWall: {fileID: 0}
   m_Health: 50
-  m_MaxHealth: 0
+  m_MaxHealth: 50
   m_Attack: 12
   m_Defense: 6
-  cooldown: 0
+  m_fbcooldown: 0
+  m_lscooldown: 0
 --- !u!1 &7159063378308968977
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +384,18 @@ PrefabInstance:
 --- !u!4 &7264485741502291754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e52140af50a806419dbfb685cf504f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7159063378980190401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &499189039877888649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1893935171264077240, guid: 7e52140af50a806419dbfb685cf504f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7159063378980190401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8215332450808748656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1249928529956496049, guid: 7e52140af50a806419dbfb685cf504f8,
     type: 3}
   m_PrefabInstance: {fileID: 7159063378980190401}
   m_PrefabAsset: {fileID: 0}
