@@ -14,6 +14,11 @@ public class HealthPickup : PickupItem
     // Update is called once per frame
     override public void Update()
     {
+        if (canInteract == true)
+        {
+
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Interact();
