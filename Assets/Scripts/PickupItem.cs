@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
+    public bool canInteract = false;
+    public PlayerCast m_player;
     // Start is called before the first frame update
     virtual public void Start()
     {
@@ -19,5 +21,23 @@ public class PickupItem : MonoBehaviour
     virtual public void Interact()
     {
         Debug.Log("Interaction");
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            canInteract = true;
+            m_player = other.gameObject.GetComponent<PlayerCast>();
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            canInteract = false;
+            m_player = null;
+        }
     }
 }
