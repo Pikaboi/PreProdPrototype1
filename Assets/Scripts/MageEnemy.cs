@@ -43,18 +43,11 @@ public class MageEnemy : Enemy
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_Agent = GetComponent<NavMeshAgent>();
         m_Maxhealth = m_Health;
-        m_HPBar.maxValue = m_Maxhealth;
-        m_HPBar.value = m_Health;
-
-        renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-        defaultMat = renderers[0].material;
     }
 
     // Update is called once per frame
     override public void Update()
     {
-        ResetMaterials();
-        UpdateHPBar();
         //Look at the player
         //May change to a vision mechanic?
         transform.LookAt(m_Player.transform.position);
@@ -71,6 +64,8 @@ public class MageEnemy : Enemy
         {
             CurrentState = State.FINISHER;
         }
+
+        Debug.Log(CurrentState);
 
         //Control all the States
         switch (CurrentState)
@@ -191,6 +186,8 @@ public class MageEnemy : Enemy
     void IdleMove()
     {
         int rand = Random.Range(0, 2);
+
+        Debug.Log(rand);
 
         if(rand == 0)
         {

@@ -30,9 +30,6 @@ public class CooldownBar : MonoBehaviour
                 float cd2 = Mathf.Round(m_Player.m_lscooldown * 100.0f) / 100.0f;
                 text.text = cd2.ToString();
                 break;
-            case PlayerCast.SpellType.Healing:
-                text.text = m_Player.HealCount.ToString();
-                break;
             default:
                 break;
         }
