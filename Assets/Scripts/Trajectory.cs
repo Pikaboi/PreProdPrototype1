@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Trajectory : MonoBehaviour
 {
+    /*
+     *THIS IS BORROWED FROM A PREVIOUS PROJECT AS A BASE
+     */
+
     //Tutorials used:
     //https://www.youtube.com/watch?v=4VUmhuhkELk
     //https://www.youtube.com/watch?v=GLu1T5Y2SSc
@@ -46,7 +50,7 @@ public class Trajectory : MonoBehaviour
     private void FixedUpdate()
     {
         ogpos = m_CastInfo.GetTrajectoryInfo().transform.position;
-        if (Input.GetMouseButton(1) && m_CastInfo.GetCurrentSpell() == PlayerCast.SpellType.LobShot)
+        if (Input.GetMouseButton(1) && m_CastInfo.GetCurrentSpell() == PlayerCast.SpellType.LobShot && m_CastInfo.m_lscooldown < 0.0f)
         {
             lr.enabled = true;
             ShowTrajectory(m_CastInfo.getLobSpeed());
