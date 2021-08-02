@@ -166,4 +166,14 @@ public class PlayerCast : MonoBehaviour
     {
         return currentSpell;
     }
+
+    public GameObject GetTrajectoryInfo()
+    {
+        return RightArm;
+    }
+
+    public float getLobSpeed()
+    {
+        return m_lobSpeed;
+    }
 }
