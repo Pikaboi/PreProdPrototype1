@@ -16,7 +16,10 @@ public class HealthPickup : PickupItem
     {
         if (canInteract == true)
         {
-
+            prompt.gameObject.SetActive(true);
+        } else
+        {
+            prompt.gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.R))

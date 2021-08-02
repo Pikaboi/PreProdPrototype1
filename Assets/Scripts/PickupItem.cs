@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupItem : MonoBehaviour
 {
     public bool canInteract = false;
     public PlayerCast m_player;
+
+    public TMPro.TMP_Text prompt;
     // Start is called before the first frame update
     virtual public void Start()
     {
