@@ -176,4 +176,9 @@ public class PlayerCast : MonoBehaviour
     {
         return m_lobSpeed;
     }
+
+    public float getFireballSize()
+    {
+        return m_FireballSize;
+    }
 }

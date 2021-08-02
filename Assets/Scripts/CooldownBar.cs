@@ -9,6 +9,7 @@ public class CooldownBar : MonoBehaviour
     [SerializeField] private PlayerCast m_Player;
 
     private TMP_Text text;
+    [SerializeField] private Slider m_fireballslider;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class CooldownBar : MonoBehaviour
         switch (spell)
         {
             case PlayerCast.SpellType.Fireball:
+
+                m_fireballslider.gameObject.SetActive(true);
+                m_fireballslider.value = m_Player.getFireballSize();
+
                 float cd = Mathf.Round(m_Player.m_fbcooldown * 100.0f) / 100.0f;
 
                 if (cd > 0)
@@ -34,6 +39,7 @@ public class CooldownBar : MonoBehaviour
                 }
                 break;
             case PlayerCast.SpellType.LobShot:
+                m_fireballslider.gameObject.SetActive(false);
                 float cd2 = Mathf.Round(m_Player.m_lscooldown * 100.0f) / 100.0f;
                 if (cd2 > 0)
                 {
@@ -45,6 +51,7 @@ public class CooldownBar : MonoBehaviour
                 }
                 break;
             case PlayerCast.SpellType.Healing:
+                m_fireballslider.gameObject.SetActive(false);
                 text.text = m_Player.HealCount.ToString();
                 break;
             default:
