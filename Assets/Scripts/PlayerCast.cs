@@ -112,7 +112,7 @@ public class PlayerCast : MonoBehaviour
                 if (m_fbcooldown < 0)
                 {
                     GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
-                    newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
+                    newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * (1 + m_FireballSize)));
 
                     m_fbcooldown = 1.0f;
                 }
