@@ -24,11 +24,25 @@ public class CooldownBar : MonoBehaviour
         {
             case PlayerCast.SpellType.Fireball:
                 float cd = Mathf.Round(m_Player.m_fbcooldown * 100.0f) / 100.0f;
-                text.text = cd.ToString();
+
+                if (cd > 0)
+                {
+                    text.text = cd.ToString();
+                } else
+                {
+                    text.text = "";
+                }
                 break;
             case PlayerCast.SpellType.LobShot:
                 float cd2 = Mathf.Round(m_Player.m_lscooldown * 100.0f) / 100.0f;
-                text.text = cd2.ToString();
+                if (cd2 > 0)
+                {
+                    text.text = cd2.ToString();
+                }
+                else
+                {
+                    text.text = "";
+                }
                 break;
             case PlayerCast.SpellType.Healing:
                 text.text = m_Player.HealCount.ToString();

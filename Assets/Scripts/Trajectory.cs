@@ -77,7 +77,7 @@ public class Trajectory : MonoBehaviour
     {
         g.transform.rotation = objectsToSpawn.transform.rotation;
         g.GetComponent<Rigidbody>().useGravity = true;
-        g.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 5.0f, 0.0f), ForceMode.Impulse);
+        g.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 4.0f, 0.0f), ForceMode.Impulse);
         g.GetComponent<Rigidbody>().AddForce(transform.forward * _speed, ForceMode.Impulse);
 
         int steps = (int)(1f / Time.fixedDeltaTime);
