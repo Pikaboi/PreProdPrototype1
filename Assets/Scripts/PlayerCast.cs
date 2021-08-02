@@ -27,7 +27,7 @@ public class PlayerCast : MonoBehaviour
     private int SpellLength = 2;
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
     public int HealCount = 3;
-    private float HealingTimer = 5.0f;
+    private float HealingTimer = 0.0f;
 
 
     //Reference to the Wall that has been spawned
@@ -58,6 +58,13 @@ public class PlayerCast : MonoBehaviour
     {
         m_fbcooldown -= Time.deltaTime;
         m_lscooldown -= Time.deltaTime;
+
+        if(HealingTimer > 0)
+        {
+            HealingTimer -= Time.deltaTime;
+            m_Health += 5;
+        }
+
         //Show button presses
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -130,7 +137,7 @@ public class PlayerCast : MonoBehaviour
                 break;
             case SpellType.Healing:
                 HealCount--;
-
+                HealingTimer = 1.0f;
                 break;
             default:
                 //Prevents anything bad happening
