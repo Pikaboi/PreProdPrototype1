@@ -33,6 +33,7 @@ public class Trajectory : MonoBehaviour
 
         bool flag = false;
 
+        //I know its obsolete but this does it better
         foreach (Scene s in SceneManager.GetAllScenes())
         {
             if (s == SceneManager.GetSceneByName("physicsScene"))
