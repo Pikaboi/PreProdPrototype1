@@ -60,4 +60,12 @@ public class Enemy : MonoBehaviour
     {
         m_HPBar.value = m_Health;
     }
+
+    public void Lookat()
+    {
+        Vector3 lookat = m_Player.transform.position - transform.position;
+        lookat.y = 0;
+        Quaternion Rotation = Quaternion.LookRotation(lookat);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, Time.deltaTime);
+    }
 }
