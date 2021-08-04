@@ -46,7 +46,7 @@ public class MageEnemy : Enemy
         m_HPBar.maxValue = m_Maxhealth;
         m_HPBar.value = m_Health;
 
-        renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        renderers = GetComponentsInChildren<MeshRenderer>();
         defaultMat = renderers[0].material;
     }
 
