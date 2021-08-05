@@ -26,6 +26,8 @@ public class PlayerCast : MonoBehaviour
     }
     private int SpellLength = 2;
     [SerializeField] SpellType currentSpell = SpellType.Fireball;
+    public int HealCount = 3;
+
 
     //Reference to the Wall that has been spawned
     public GameObject CurrentWall;
@@ -55,6 +57,7 @@ public class PlayerCast : MonoBehaviour
     {
         m_fbcooldown -= Time.deltaTime;
         m_lscooldown -= Time.deltaTime;
+
         //Show button presses
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -109,7 +112,7 @@ public class PlayerCast : MonoBehaviour
                 if (m_fbcooldown < 0)
                 {
                     GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
-                    newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack));
+                    newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * (1 + m_FireballSize)));
 
                     m_fbcooldown = 1.0f;
                 }
@@ -126,7 +129,12 @@ public class PlayerCast : MonoBehaviour
                 }
                 break;
             case SpellType.Healing:
-
+                if (HealCount > 0 && m_Health != m_MaxHealth)
+                {
+                    HealCount--;
+                    m_Health += 20;
+                    m_Health = Mathf.Min(m_MaxHealth, m_Health);
+                }
                 break;
             default:
                 //Prevents anything bad happening
@@ -157,5 +165,20 @@ public class PlayerCast : MonoBehaviour
     public SpellType GetCurrentSpell()
     {
         return currentSpell;
+    }
+
+    public GameObject GetTrajectoryInfo()
+    {
+        return RightArm;
+    }
+
+    public float getLobSpeed()
+    {
+        return m_lobSpeed;
+    }
+
+    public float getFireballSize()
+    {
+        return m_FireballSize;
     }
 }
