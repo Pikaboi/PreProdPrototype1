@@ -8887,36 +8887,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1693392528
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1693392529}
-  m_Layer: 0
-  m_Name: Aimer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1693392529
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693392528}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1409116045044337348}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1748368542
 GameObject:
   m_ObjectHideFlags: 0
@@ -11956,45 +11926,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1409116045044337347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4142299098401156824, guid: cf8aa74711a34c4488913d6c80528028,
-    type: 3}
-  m_PrefabInstance: {fileID: 3094615636630103067}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1409116045044337348 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4142299098401156831, guid: cf8aa74711a34c4488913d6c80528028,
-    type: 3}
-  m_PrefabInstance: {fileID: 3094615636630103067}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1409116045044337349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409116045044337347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4318aec62cc416c40931c7aa29499efa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Health: 35
-  m_Attack: 10
-  m_Defense: 3
-  m_Speed: 0
-  m_Aimer: {fileID: 1693392528}
-  m_Agent: {fileID: 0}
-  m_Player: {fileID: 0}
-  renderers: []
-  damage: {fileID: 2100000, guid: fc10f4fdddbb00c478b34dd2ad8c38f3, type: 2}
-  defaultMat: {fileID: 0}
-  resetMatTimer: 0
-  m_Offense: 0
-  m_HPBar: {fileID: 8756151979384545159}
-  m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
-    type: 3}
 --- !u!1001 &2384382691899226192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12313,15 +12244,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7640979394800256552}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8756151979384545159 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6014083772599270300, guid: cf8aa74711a34c4488913d6c80528028,
-    type: 3}
-  m_PrefabInstance: {fileID: 3094615636630103067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
