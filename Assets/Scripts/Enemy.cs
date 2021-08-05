@@ -11,10 +11,12 @@ public class Enemy : MonoBehaviour
     public int m_Defense;
     public float m_Speed;
 
+    public GameObject m_Aimer;
+
     public NavMeshAgent m_Agent;
     public GameObject m_Player;
 
-    public SkinnedMeshRenderer[] renderers;
+    public MeshRenderer[] renderers;
     public Material damage;
     public Material defaultMat;
     public float resetMatTimer = 0.0f;
@@ -36,7 +38,7 @@ public class Enemy : MonoBehaviour
     virtual public void TakeDamage(int _might)
     {
         m_Health -= Mathf.Max(_might - m_Defense, 0);
-        foreach(SkinnedMeshRenderer r in renderers)
+        foreach(MeshRenderer r in renderers)
         {
             r.material = damage;
         }
@@ -49,7 +51,7 @@ public class Enemy : MonoBehaviour
         
         if(resetMatTimer < 0)
         {
-            foreach (SkinnedMeshRenderer r in renderers)
+            foreach (MeshRenderer r in renderers)
             {
                 r.material = defaultMat;
             }
@@ -59,5 +61,15 @@ public class Enemy : MonoBehaviour
     public void UpdateHPBar()
     {
         m_HPBar.value = m_Health;
+    }
+
+    public void Lookat()
+    {
+        Vector3 lookat = m_Player.transform.position - transform.position;
+        lookat.y = 0;
+        Quaternion Rotation = Quaternion.LookRotation(lookat);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, Time.deltaTime);
+
+        m_Aimer.transform.LookAt(m_Player.transform.position);
     }
 }

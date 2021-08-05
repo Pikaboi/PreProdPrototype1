@@ -46,7 +46,7 @@ public class MageEnemy : Enemy
         m_HPBar.maxValue = m_Maxhealth;
         m_HPBar.value = m_Health;
 
-        renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        renderers = GetComponentsInChildren<MeshRenderer>();
         defaultMat = renderers[0].material;
     }
 
@@ -57,7 +57,7 @@ public class MageEnemy : Enemy
         UpdateHPBar();
         //Look at the player
         //May change to a vision mechanic?
-        transform.LookAt(m_Player.transform.position);
+        Lookat();
 
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
@@ -102,6 +102,8 @@ public class MageEnemy : Enemy
         }
     }
 
+    
+
     //Move the enemy back to keep distance from player
     void MoveBack()
     {
@@ -120,8 +122,8 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
-        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
+        newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
         m_AttackCount++;
 
@@ -143,7 +145,7 @@ public class MageEnemy : Enemy
         if(m_ChargeTimer < 0.0f)
         {
             GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(transform.forward, 1.8f, "EnemyProjectile", m_Attack * 3);
+            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 1.8f, "EnemyProjectile", m_Attack * 3);
             m_finisherReady = false;
 
             CurrentState = State.IDLE;

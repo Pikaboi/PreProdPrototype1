@@ -33,9 +33,11 @@ public class CooldownBar : MonoBehaviour
                 if (cd > 0)
                 {
                     text.text = cd.ToString();
+                    m_fireballslider.gameObject.SetActive(false);
                 } else
                 {
                     text.text = "";
+                    m_fireballslider.gameObject.SetActive(true);
                 }
                 break;
             case PlayerCast.SpellType.LobShot:
