@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     public Slider m_HPBar;
 
+    public GameObject healthDrop;
+
     // Start is called before the first frame update
     virtual public void Start()
     {
