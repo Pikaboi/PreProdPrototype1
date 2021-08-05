@@ -2212,6 +2212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534323579}
+  - {fileID: 940976943}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4996,6 +4997,36 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &940976942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940976943}
+  m_Layer: 0
+  m_Name: Patrol Point (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940976943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940976942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -66.1, y: 0.6, z: -28.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407476935}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &981289750
 Mesh:
   m_ObjectHideFlags: 0
@@ -12280,7 +12311,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_patrol
       value: 
-      objectReference: {fileID: 534323579}
+      objectReference: {fileID: 940976943}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name
@@ -12294,7 +12325,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039310, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.9
+      value: -78.3
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039310, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -12304,7 +12335,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039310, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16
+      value: 31.2
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039310, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}

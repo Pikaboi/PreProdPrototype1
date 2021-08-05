@@ -37,4 +37,9 @@ public class HealthPickup : PickupItem
         }
     }
 
+    public void SetHealthCount(int _count)
+    {
+        m_healCount = _count;
+    }
+
 }
