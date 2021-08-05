@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Enemy[] enemies;
+    public List<Enemy> enemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +15,17 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemies = GameObject.FindObjectsOfType<Enemy>();
-
-        if(enemies.Length == 0)
+        foreach(Enemy e in enemies)
         {
-            SceneManager.LoadScene(2);
+            if(e == null)
+            {
+                enemies.Remove(e);
+            }
+        }
+
+        if (enemies.Count == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
