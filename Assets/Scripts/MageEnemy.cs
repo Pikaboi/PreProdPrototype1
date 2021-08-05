@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class MageEnemy : Enemy
 {
     [SerializeField] private GameObject m_enemyFireball;
+    [SerializeField] private Transform m_patrol;
+    private Vector3 m_ogPos;
 
     //the states the enemy can be in
     public enum State
@@ -41,6 +43,7 @@ public class MageEnemy : Enemy
     // Start is called before the first frame update
     override public void Start()
     {
+        m_ogPos = transform.position;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_Agent = GetComponent<NavMeshAgent>();
         m_Maxhealth = m_Health;
@@ -110,6 +113,7 @@ public class MageEnemy : Enemy
 
     void Docile()
     {
+        
         if(m_Health < m_Maxhealth)
         {
             m_Offense = true;
