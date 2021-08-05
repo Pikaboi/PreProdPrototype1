@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     public Material defaultMat;
     public float resetMatTimer = 0.0f;
 
+    public bool m_Offense = false;
+
     public Slider m_HPBar;
 
     // Start is called before the first frame update

@@ -29,9 +29,17 @@ public class EnemySentry : Enemy
         ResetMaterials();
         UpdateHPBar();
 
-        //Better Lookat Set up
-        Lookat();
-        AttackCooldown();
+        if (m_Health < m_Maxhealth)
+        {
+            m_Offense = true;
+        }
+
+        if (m_Offense == true)
+        {
+            //Better Lookat Set up
+            Lookat();
+            AttackCooldown();
+        }
 
         if (m_Health < 0)
         {

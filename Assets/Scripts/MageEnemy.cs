@@ -14,7 +14,8 @@ public class MageEnemy : Enemy
         DEFENSE,
         ATTACK,
         FINISHER,
-        BACKWARDS
+        BACKWARDS,
+        DOCILE
     }
 
     //The State the enemy is currently in
@@ -48,6 +49,8 @@ public class MageEnemy : Enemy
 
         renderers = GetComponentsInChildren<MeshRenderer>();
         defaultMat = renderers[0].material;
+
+        CurrentState = State.DOCILE;
     }
 
     // Update is called once per frame
@@ -62,7 +65,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER)
+        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER && CurrentState != State.DOCILE)
         {
             AttackCooldown();
         }
@@ -90,6 +93,9 @@ public class MageEnemy : Enemy
             case State.BACKWARDS:
                 MoveBack();
                 break;
+            case State.DOCILE:
+                Docile();
+                break;
             default:
                 //If something odd happens, default to Idle
                 Idle();
@@ -102,7 +108,29 @@ public class MageEnemy : Enemy
         }
     }
 
-    
+    void Docile()
+    {
+        if(m_Health < m_Maxhealth)
+        {
+            m_Offense = true;
+
+            //Aggro his friends too
+            Collider[] hits = Physics.OverlapSphere(transform.position, 10.0f);
+
+            foreach(Collider hit in hits)
+            {
+                if(hit.GetComponent<Enemy>() != null)
+                {
+                    hit.GetComponent<Enemy>().m_Offense = true;
+                }
+            }
+        }
+
+        if (m_Offense == true)
+        {
+            CurrentState = State.IDLE;
+        }
+    }
 
     //Move the enemy back to keep distance from player
     void MoveBack()
