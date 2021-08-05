@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerCast : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class PlayerCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(m_Health <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
         m_fbcooldown -= Time.deltaTime;
         m_lscooldown -= Time.deltaTime;
 
