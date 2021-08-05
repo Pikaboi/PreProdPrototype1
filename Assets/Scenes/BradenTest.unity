@@ -3768,8 +3768,8 @@ GameObject:
   - component: {fileID: 707926813}
   - component: {fileID: 707926812}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: Collection
+  m_TagString: CollectionPrompt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11992,6 +11992,10 @@ PrefabInstance:
       propertyPath: prompt
       value: 
       objectReference: {fileID: 707926812}
+    - target: {fileID: 961325151912687, guid: 8ea89597097429a40a62d34399fca709, type: 3}
+      propertyPath: m_healCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea89597097429a40a62d34399fca709, type: 3}
 --- !u!1001 &2384382691899226192
