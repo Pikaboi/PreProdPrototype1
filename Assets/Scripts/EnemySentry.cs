@@ -32,6 +32,11 @@ public class EnemySentry : Enemy
         //Better Lookat Set up
         Lookat();
         AttackCooldown();
+
+        if (m_Health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void AttackCooldown()
