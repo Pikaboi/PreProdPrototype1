@@ -122,8 +122,8 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
-        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
+        newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
         m_AttackCount++;
 
@@ -145,7 +145,7 @@ public class MageEnemy : Enemy
         if(m_ChargeTimer < 0.0f)
         {
             GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(transform.forward, 1.8f, "EnemyProjectile", m_Attack * 3);
+            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 1.8f, "EnemyProjectile", m_Attack * 3);
             m_finisherReady = false;
 
             CurrentState = State.IDLE;

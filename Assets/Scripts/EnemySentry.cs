@@ -26,12 +26,25 @@ public class EnemySentry : Enemy
     // Update is called once per frame
     override public void Update()
     {
+        ResetMaterials();
+        UpdateHPBar();
+
         //Better Lookat Set up
         Lookat();
+        AttackCooldown();
+    }
 
-        //uses the same code as player projectiles
-        //Use set size instead
-        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+    void AttackCooldown()
+    {
+        m_AttackTimer -= Time.deltaTime;
+
+        if (m_AttackTimer < 0.0f)
+        {
+            //uses the same code as player projectiles
+            //Use set size instead
+            GameObject newFireball = Instantiate(m_enemyFireball, m_Aimer.transform.position + m_Aimer.transform.forward * 1.5f, m_Aimer.transform.rotation);
+            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+            m_AttackTimer = Random.Range(1.0f, 6.0f);
+        }
     }
 }

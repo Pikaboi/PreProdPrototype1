@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     public int m_Defense;
     public float m_Speed;
 
+    public GameObject m_Aimer;
+
     public NavMeshAgent m_Agent;
     public GameObject m_Player;
 
@@ -67,5 +69,7 @@ public class Enemy : MonoBehaviour
         lookat.y = 0;
         Quaternion Rotation = Quaternion.LookRotation(lookat);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, Time.deltaTime);
+
+        m_Aimer.transform.LookAt(m_Player.transform.position);
     }
 }
