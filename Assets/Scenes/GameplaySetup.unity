@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6232,6 +6232,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6760369281798240013, guid: 33e02c162059b0e439f33fab58696076, type: 3}
+--- !u!1 &2003029045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5736129183778570735, guid: 2ff3436274ebdb244bc854308559ec39,
+    type: 3}
+  m_PrefabInstance: {fileID: 7159063378734096224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010961019
 GameObject:
   m_ObjectHideFlags: 0
@@ -57576,6 +57582,14 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1425467524}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: LeftArm
+      value: 
+      objectReference: {fileID: 2003029045}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: RightArm
+      value: 
+      objectReference: {fileID: 2003029045}
     - target: {fileID: 1745371536745553339, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
