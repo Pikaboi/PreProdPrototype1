@@ -21,7 +21,11 @@ public class Enemy : MonoBehaviour
     public Material defaultMat;
     public float resetMatTimer = 0.0f;
 
+    public bool m_Offense = false;
+
     public Slider m_HPBar;
+
+    public GameObject healthDrop;
 
     // Start is called before the first frame update
     virtual public void Start()
