@@ -28,4 +28,12 @@ public class EnemyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void AggroEnemies()
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.m_Offense = true;
+        }
+    }
 }

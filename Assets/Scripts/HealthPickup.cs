@@ -8,7 +8,7 @@ public class HealthPickup : PickupItem
     // Start is called before the first frame update
     override public void Start()
     {
-        
+        prompt = GameObject.FindGameObjectWithTag("CollectionPrompt").GetComponent<TMPro.TMP_Text>();
     }
 
     // Update is called once per frame
@@ -16,10 +16,10 @@ public class HealthPickup : PickupItem
     {
         if (canInteract == true)
         {
-            prompt.gameObject.SetActive(true);
+            prompt.enabled = true;
         } else
         {
-            prompt.gameObject.SetActive(false);
+            prompt.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -33,8 +33,14 @@ public class HealthPickup : PickupItem
         if(m_player != null)
         {
             m_player.HealCount += m_healCount;
+            prompt.enabled = false;
             Destroy(gameObject);
         }
+    }
+
+    public void SetHealthCount(int _count)
+    {
+        m_healCount = _count;
     }
 
 }

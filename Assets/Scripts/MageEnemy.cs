@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class MageEnemy : Enemy
 {
     [SerializeField] private GameObject m_enemyFireball;
+    [SerializeField] private Transform m_patrol;
+    private Vector3 m_ogPos;
 
     //the states the enemy can be in
     public enum State
@@ -14,7 +16,8 @@ public class MageEnemy : Enemy
         DEFENSE,
         ATTACK,
         FINISHER,
-        BACKWARDS
+        BACKWARDS,
+        DOCILE
     }
 
     //The State the enemy is currently in
@@ -35,11 +38,13 @@ public class MageEnemy : Enemy
     float m_ChargeTimer = 4.0f;
     int m_Maxhealth;
     bool m_finisherReady = true;
-    
+
+    private Vector3 currdest;
 
     // Start is called before the first frame update
     override public void Start()
     {
+        m_ogPos = transform.position;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_Agent = GetComponent<NavMeshAgent>();
         m_Maxhealth = m_Health;
@@ -48,6 +53,10 @@ public class MageEnemy : Enemy
 
         renderers = GetComponentsInChildren<MeshRenderer>();
         defaultMat = renderers[0].material;
+
+        CurrentState = State.DOCILE;
+        m_Agent.destination = m_patrol.position;
+        currdest = m_patrol.position;
     }
 
     // Update is called once per frame
@@ -57,12 +66,18 @@ public class MageEnemy : Enemy
         UpdateHPBar();
         //Look at the player
         //May change to a vision mechanic?
-        Lookat();
+        if (CurrentState != State.DOCILE)
+        {
+            Lookat();
+        } else
+        {
+            DocileLook();
+        }
 
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER)
+        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER && CurrentState != State.DOCILE)
         {
             AttackCooldown();
         }
@@ -90,6 +105,9 @@ public class MageEnemy : Enemy
             case State.BACKWARDS:
                 MoveBack();
                 break;
+            case State.DOCILE:
+                Docile();
+                break;
             default:
                 //If something odd happens, default to Idle
                 Idle();
@@ -98,11 +116,60 @@ public class MageEnemy : Enemy
 
         if(m_Health < 0)
         {
+            Instantiate(healthDrop, transform.position, transform.rotation);
+            healthDrop.GetComponent<HealthPickup>().SetHealthCount(1);
             Destroy(gameObject);
         }
     }
 
-    
+    void DocileLook()
+    {
+        Vector3 lookat = m_patrol.transform.position - transform.position;
+        lookat.y = 0;
+        Quaternion Rotation = Quaternion.LookRotation(lookat);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, Time.deltaTime);
+
+        m_Aimer.transform.LookAt(m_patrol.transform.position);
+    }
+
+    void Docile()
+    {
+        if(m_Agent.remainingDistance == 0)
+        {
+            if(currdest == m_patrol.position)
+            {
+                currdest = m_ogPos;
+                m_Agent.destination = m_ogPos;
+            } else if(currdest == m_ogPos)
+            {
+                currdest = m_patrol.position;
+                m_Agent.destination = m_patrol.position;
+            }
+        }
+       
+
+        if(m_Health < m_Maxhealth)
+        {
+            m_Offense = true;
+
+            //Aggro his friends too
+            Collider[] hits = Physics.OverlapSphere(transform.position, 10.0f);
+
+            foreach(Collider hit in hits)
+            {
+                if(hit.GetComponent<Enemy>() != null)
+                {
+                    hit.GetComponent<Enemy>().m_Offense = true;
+                }
+            }
+        }
+
+        if (m_Offense == true)
+        {
+            CurrentState = State.IDLE;
+            m_Agent.ResetPath();
+        }
+    }
 
     //Move the enemy back to keep distance from player
     void MoveBack()
