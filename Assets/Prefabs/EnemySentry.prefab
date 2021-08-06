@@ -104,6 +104,7 @@ MonoBehaviour:
   resetMatTimer: 0
   m_Offense: 0
   m_HPBar: {fileID: 6014083772599270300}
+  healthDrop: {fileID: 0}
   m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
     type: 3}
 --- !u!1 &6014083771524873991
