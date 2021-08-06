@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5144598363566581527}
   - component: {fileID: 5144598363566581512}
   - component: {fileID: 5144598363566581513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LobShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
