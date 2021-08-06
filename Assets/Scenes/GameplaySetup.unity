@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1080,6 +1080,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6627345036716010397, guid: 6210bb46561caf3498457e1dbbb46ae7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20192abacf399724babe18d2830ab045, type: 2}
     - target: {fileID: 6627345036790977278, guid: 6210bb46561caf3498457e1dbbb46ae7,
         type: 3}
       propertyPath: m_Layer
@@ -1095,6 +1100,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6627345037137393055, guid: 6210bb46561caf3498457e1dbbb46ae7,
+        type: 3}
+      propertyPath: m_MaterialTemplate
+      value: 
+      objectReference: {fileID: 2100000, guid: 20192abacf399724babe18d2830ab045, type: 2}
     - target: {fileID: 6627345037142328259, guid: 6210bb46561caf3498457e1dbbb46ae7,
         type: 3}
       propertyPath: m_Layer
@@ -1150,6 +1160,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8085098065511652008, guid: 6210bb46561caf3498457e1dbbb46ae7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20192abacf399724babe18d2830ab045, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6210bb46561caf3498457e1dbbb46ae7, type: 3}
 --- !u!1001 &1021272814
