@@ -173,10 +173,15 @@ public class MageEnemy : Enemy
     //Move the enemy back to keep distance from player
     void MoveBack()
     {
-        m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < 6.0f){
+            m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
+        } else if (Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
+        {
+            m_Agent.Move(transform.forward * m_Speed * Time.deltaTime);
+        }
 
         //return to idle once its at a safe distance
-        if(Vector3.Distance(transform.position, m_Player.transform.position) > 6.0f)
+        if(Vector3.Distance(transform.position, m_Player.transform.position) > 6.0f && Vector3.Distance(transform.position, m_Player.transform.position) < 10.0f)
         {
             CurrentState = State.IDLE;
             IdleMove();
