@@ -34,7 +34,7 @@ public class HealthPickup : PickupItem
         {
             m_player.HealCount += m_healCount;
             prompt.enabled = false;
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 
