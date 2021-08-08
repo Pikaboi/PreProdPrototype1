@@ -10,6 +10,7 @@ public class WallSpell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_Audio = GetComponent<AudioSource>();
         m_Audio.Play();
     }
 

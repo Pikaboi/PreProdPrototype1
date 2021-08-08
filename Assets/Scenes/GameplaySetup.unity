@@ -3278,7 +3278,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Health
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -3288,7 +3288,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Defense
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -3762,7 +3762,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Health
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -3772,7 +3772,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Defense
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -4907,7 +4907,7 @@ PrefabInstance:
       objectReference: {fileID: 1953581704}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: m_Attack
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: m_Health
@@ -4923,11 +4923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: m_fbMaxCooldown
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: m_lsMaxCooldown
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496988, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
@@ -5782,7 +5782,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Health
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -5792,7 +5792,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Defense
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -57856,7 +57856,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Health
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
@@ -57866,7 +57866,7 @@ PrefabInstance:
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Defense
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
