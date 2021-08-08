@@ -212,7 +212,7 @@ public class MageEnemy : Enemy
         if(m_ChargeTimer < 0.0f)
         {
             GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 1.8f, "EnemyProjectile", m_Attack * 3);
+            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.5f, "EnemyProjectile", m_Attack * 3);
             m_finisherReady = false;
 
             CurrentState = State.IDLE;
@@ -242,9 +242,7 @@ public class MageEnemy : Enemy
         }
 
         //Move Player
-        Vector3 playerdis = transform.position - m_Player.transform.position;
-        Vector3 dir = Vector3.Cross(playerdis, Vector3.up);
-        m_Agent.SetDestination((transform.position + dir) * (m_IdleMove));
+        m_Agent.Move(transform.right * m_Agent.speed * m_IdleMove * Time.deltaTime);
 
         //Change up movement when timer ends
         m_idleTimer -= Time.deltaTime;
