@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5663,6 +5663,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6760369281798240013, guid: 33e02c162059b0e439f33fab58696076, type: 3}
+--- !u!82 &1661327344 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9020853371220961991, guid: 2ff3436274ebdb244bc854308559ec39,
+    type: 3}
+  m_PrefabInstance: {fileID: 7159063378734096224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1664584108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57590,6 +57596,10 @@ PrefabInstance:
       propertyPath: RightArm
       value: 
       objectReference: {fileID: 2003029045}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_AudioHeal
+      value: 
+      objectReference: {fileID: 1661327344}
     - target: {fileID: 1745371536745553339, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

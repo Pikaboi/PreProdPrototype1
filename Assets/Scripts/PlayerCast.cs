@@ -18,6 +18,8 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private GameObject LeftArm;
     [SerializeField] private GameObject RightArm;
 
+    [SerializeField] private AudioSource m_AudioHeal;
+
     //Spell Enum
     public enum SpellType
     {
@@ -140,6 +142,7 @@ public class PlayerCast : MonoBehaviour
                     HealCount--;
                     m_Health += 20;
                     m_Health = Mathf.Min(m_MaxHealth, m_Health);
+                    m_AudioHeal.Play();
                 }
                 break;
             default:
