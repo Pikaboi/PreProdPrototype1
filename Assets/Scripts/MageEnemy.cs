@@ -31,8 +31,7 @@ public class MageEnemy : Enemy
     float m_DefendTimer = 5.0f;
 
     //Attack timer
-    float m_AttackTimer = 3.0f;
-    int m_AttackCount = 0;
+    [SerializeField] private float m_AttackTimer = 3.0f;
 
     //Finisher Charge Up
     float m_ChargeTimer = 4.0f;
@@ -192,16 +191,7 @@ public class MageEnemy : Enemy
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
         newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
-        m_AttackCount++;
-
-        if (m_AttackCount < 5)
-        {
-            CurrentState = State.IDLE;
-        } else
-        {
-            CurrentState = State.DEFENSE;
-            m_AttackCount = 0;
-        }
+        CurrentState = State.IDLE;
     }
 
     //Strong attack used at low health

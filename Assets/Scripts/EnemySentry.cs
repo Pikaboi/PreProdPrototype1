@@ -9,7 +9,7 @@ public class EnemySentry : Enemy
     int m_Maxhealth;
 
     //Attack timer
-    float m_AttackTimer = 3.0f;
+    [SerializeField] private float m_AttackTimer = 3.0f;
 
     // Start is called before the first frame update
     override public void Start()

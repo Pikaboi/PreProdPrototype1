@@ -50,6 +50,9 @@ public class PlayerCast : MonoBehaviour
     public float m_fbcooldown = 0;
     public float m_lscooldown = 0;
 
+    [SerializeField] private float m_fbMaxCooldown = 0;
+    [SerializeField] private float m_lsMaxCooldown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -123,7 +126,7 @@ public class PlayerCast : MonoBehaviour
                     GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
                     newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * (1 + m_FireballSize)));
 
-                    m_fbcooldown = 1.0f;
+                    m_fbcooldown = m_fbMaxCooldown;
                 }
 
                 break;
@@ -134,7 +137,7 @@ public class PlayerCast : MonoBehaviour
                     GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
                     newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
-                    m_lscooldown = 5.0f;
+                    m_lscooldown = m_lsMaxCooldown;
                 }
                 break;
             case SpellType.Healing:
