@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -918,72 +918,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40f88143975116046a1c6097f2fc7c25, type: 3}
---- !u!1001 &8734375077487504602
+--- !u!1001 &2744757759902232781
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
-        type: 3}
-      propertyPath: m_Name
-      value: potion_bottle (Final)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.312317
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 15.134
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -140.21635
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9132177056764310972, guid: 5e4476956071ac1418799874f1557028,
+    - target: {fileID: 2422355914774964651, guid: 057c6b016067b824f995ae531c3c0efe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3086724354827498257, guid: 057c6b016067b824f995ae531c3c0efe,
+        type: 3}
+      propertyPath: m_Name
+      value: potion_bottle (Final)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5e4476956071ac1418799874f1557028, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 057c6b016067b824f995ae531c3c0efe, type: 3}
