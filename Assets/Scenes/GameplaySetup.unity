@@ -3275,6 +3275,12 @@ PrefabInstance:
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 1033093953}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
+        type: 3}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name
@@ -3738,6 +3744,12 @@ PrefabInstance:
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 1004946556}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
+        type: 3}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name
@@ -5703,6 +5715,12 @@ PrefabInstance:
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 899673920}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
+        type: 3}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name
@@ -57761,6 +57779,12 @@ PrefabInstance:
       propertyPath: defaultMat
       value: 
       objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
+        type: 3}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name

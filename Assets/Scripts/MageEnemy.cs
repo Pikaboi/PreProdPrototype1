@@ -117,7 +117,7 @@ public class MageEnemy : Enemy
         if(m_Health < 0)
         {
             Instantiate(healthDrop, transform.position, transform.rotation);
-            healthDrop.GetComponent<HealthPickup>().SetHealthCount(1);
+            healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
             Destroy(gameObject);
         }
     }
