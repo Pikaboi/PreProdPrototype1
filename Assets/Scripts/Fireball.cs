@@ -12,7 +12,6 @@ public class Fireball : MonoBehaviour
     private int m_Might = 0;
 
     [SerializeField] private AudioSource m_AudioFire;
-    [SerializeField] private AudioSource m_AudioCollision;
 
     private bool hashit = false;
 
@@ -37,7 +36,7 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if(hashit && !m_AudioCollision.isPlaying && !m_AudioFire.isPlaying){
+        if(hashit && !m_AudioFire.isPlaying){
             Destroy(gameObject);
         }
 
@@ -62,13 +61,11 @@ public class Fireball : MonoBehaviour
         if(gameObject.tag == "EnemyProjectile" && collision.gameObject.tag == "Player")
         {
             //hurt player
-            m_AudioCollision.Play();
             collision.gameObject.GetComponent<PlayerCast>().TakeDamage(m_Might);
         }
 
         if(gameObject.tag == "PlayerProjectile" && collision.gameObject.tag == "Enemy")
         {
-            m_AudioCollision.Play();
             //hurt enemy
             collision.gameObject.GetComponent<Enemy>().TakeDamage(m_Might);
         }

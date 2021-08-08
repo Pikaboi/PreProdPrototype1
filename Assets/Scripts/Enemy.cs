@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject healthDrop;
 
+    public AudioSource m_AudioDamage;
+
     // Start is called before the first frame update
     virtual public void Start()
     {
@@ -41,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void TakeDamage(int _might)
     {
+        m_AudioDamage.Play();
         m_Health -= Mathf.Max(_might - m_Defense, 0);
         foreach(MeshRenderer r in renderers)
         {

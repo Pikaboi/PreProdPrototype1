@@ -19,6 +19,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private GameObject RightArm;
 
     [SerializeField] private AudioSource m_AudioHeal;
+    [SerializeField] private AudioSource m_AudioDamage;
 
     //Spell Enum
     public enum SpellType
@@ -168,6 +169,7 @@ public class PlayerCast : MonoBehaviour
 
     public void TakeDamage(int _Might)
     {
+        m_AudioDamage.Play();
         m_Health -= Mathf.Max(_Might - m_Defense, 0);
     }
 
