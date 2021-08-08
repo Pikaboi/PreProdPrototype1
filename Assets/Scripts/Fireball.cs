@@ -11,10 +11,16 @@ public class Fireball : MonoBehaviour
     private float lifeTimer = 10.0f;
     private int m_Might = 0;
 
+    [SerializeField] private AudioSource m_AudioFire;
+    [SerializeField] private AudioSource m_AudioCollision;
+
+    private bool hashit = false;
+
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        m_AudioFire.Play();
     }
 
     // Update is called once per frame
@@ -30,6 +36,11 @@ public class Fireball : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        if(hashit && !m_AudioCollision.isPlaying && !m_AudioFire.isPlaying){
+            Destroy(gameObject);
+        }
+
     }
 
     //Allows to set its direction to where we are facing
@@ -51,15 +62,24 @@ public class Fireball : MonoBehaviour
         if(gameObject.tag == "EnemyProjectile" && collision.gameObject.tag == "Player")
         {
             //hurt player
+            m_AudioCollision.Play();
             collision.gameObject.GetComponent<PlayerCast>().TakeDamage(m_Might);
         }
 
         if(gameObject.tag == "PlayerProjectile" && collision.gameObject.tag == "Enemy")
         {
+            m_AudioCollision.Play();
             //hurt enemy
             collision.gameObject.GetComponent<Enemy>().TakeDamage(m_Might);
         }
 
-        Destroy(gameObject);
+        TurnOffPhysics();
+        hashit = true;
+    }
+
+    private void TurnOffPhysics()
+    {
+        m_rb.detectCollisions = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }

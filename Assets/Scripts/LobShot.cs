@@ -14,6 +14,10 @@ public class LobShot : MonoBehaviour
 
     private int m_Might = 0;
 
+    [SerializeField] private AudioSource m_LobRelease;
+    [SerializeField] private AudioSource m_LobExplode;
+    private bool hashit = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,13 @@ public class LobShot : MonoBehaviour
             m_rb.AddForce(new Vector3(0.0f, m_Height, 0.0f), ForceMode.Impulse);
             m_rb.AddForce(transform.forward * m_Speed, ForceMode.Impulse);
             m_released = false;
+
+            m_LobRelease.Play();
+        }
+
+        if(hashit && !m_LobExplode.isPlaying && !m_LobRelease.isPlaying)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -48,6 +59,7 @@ public class LobShot : MonoBehaviour
         //Check Radius of explosion
         Collider[] hits = Physics.OverlapSphere(transform.position, m_Radius);
 
+        m_LobExplode.Play();
 
         if (gameObject.tag == "EnemyProjectile")
         {
@@ -74,6 +86,13 @@ public class LobShot : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        RemovePhysics();
+        hashit = true;
+    }
+
+    private void RemovePhysics()
+    {
+        m_rb.detectCollisions = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }

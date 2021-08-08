@@ -5,12 +5,12 @@ using UnityEngine;
 public class WallSpell : MonoBehaviour
 {
     [SerializeField] private float Timer = 1.0f;
-
+    private AudioSource m_Audio;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Audio.Play();
     }
 
     // Update is called once per frame
