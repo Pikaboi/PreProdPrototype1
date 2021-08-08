@@ -3272,9 +3272,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
+      propertyPath: m_Attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 1033093953}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Defense
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: healthDrop
@@ -3741,15 +3756,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
+      propertyPath: m_Attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 1004946556}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Defense
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: healthDrop
       value: 
       objectReference: {fileID: 8500493764439633670, guid: 5e4476956071ac1418799874f1557028,
         type: 3}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_AttackTimer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039305, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: m_Name
@@ -5417,6 +5452,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Game
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70912d6ed8a5ed74d9eaf3fe57c79a81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70912d6ed8a5ed74d9eaf3fe57c79a81, type: 3}
 --- !u!1001 &1644789855
@@ -5736,9 +5776,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
+      propertyPath: m_Attack
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Health
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 899673920}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Defense
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: healthDrop
@@ -57795,9 +57850,24 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fc10f4fdddbb00c478b34dd2ad8c38f3, type: 2}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
+      propertyPath: m_Attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
       propertyPath: m_patrol
       value: 
       objectReference: {fileID: 839880663}
+    - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
+        type: 3}
+      propertyPath: m_Defense
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7640979394775039296, guid: c773f8fdfc97fd54293036ac52d5a867,
         type: 3}
       propertyPath: defaultMat
