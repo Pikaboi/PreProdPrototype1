@@ -77,7 +77,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.DEFENSE && CurrentState != State.FINISHER && CurrentState != State.DOCILE)
+        if (CurrentState != State.FINISHER && CurrentState != State.DOCILE)
         {
             AttackCooldown();
         }
@@ -251,6 +251,7 @@ public class MageEnemy : Enemy
         {
             IdleMove();
             m_idleTimer = 4.0f;
+            CurrentState = State.DEFENSE;
         }
 
     }
