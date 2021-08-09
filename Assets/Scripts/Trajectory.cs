@@ -69,6 +69,7 @@ public class Trajectory : MonoBehaviour
         SceneManager.SetActiveScene(physicsScene);
         g = GameObject.Instantiate(objectsToSpawn);
         g.transform.name = "ReferenceItem";
+        g.GetComponent<LobShot>().m_Particle.SetActive(false);
         Destroy(g.GetComponent<MeshRenderer>());
         Destroy(g.GetComponent<Trajectory>());
         SceneManager.SetActiveScene(mainScene);

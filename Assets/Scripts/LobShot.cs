@@ -18,6 +18,8 @@ public class LobShot : MonoBehaviour
     [SerializeField] private AudioSource m_LobExplode;
     private bool hashit = false;
 
+    public GameObject m_Particle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,11 @@ public class LobShot : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void LateUpdate()
+    {
+        m_Particle.transform.position = transform.position;
     }
 
     public void setValues(float _speed, string _tag, int _Might)
