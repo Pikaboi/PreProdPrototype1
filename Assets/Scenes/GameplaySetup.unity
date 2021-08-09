@@ -196,6 +196,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 50863833}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &53706650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4947706720881438934, guid: 2ff3436274ebdb244bc854308559ec39,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381954161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &53706651
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53706650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6956488df0fa1ce419637d1cb928eadb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &76608484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9629,6 +9654,10 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 637718517}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_anim
+      value: 
+      objectReference: {fileID: 53706651}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: LeftArm
       value: 
