@@ -13,7 +13,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private GameObject Wall;
 
     //Debug
-    [SerializeField] private TMPro.TMP_Text text;
+    [SerializeField] private IconSwap m_icons;
 
     [SerializeField] private GameObject LeftArm;
     [SerializeField] private GameObject RightArm;
@@ -56,7 +56,7 @@ public class PlayerCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = currentSpell.ToString();
+        //text.text = currentSpell.ToString();
     }
 
     // Update is called once per frame
@@ -167,7 +167,21 @@ public class PlayerCast : MonoBehaviour
             currentSpell = 0;
         }
 
-        text.text = currentSpell.ToString();
+        switch (currentSpell)
+        {
+            case SpellType.Fireball:
+                m_icons.showFB();
+                break;
+            case SpellType.LobShot:
+                m_icons.showLS();
+                break;
+            case SpellType.Healing:
+                m_icons.showHeal();
+                break;
+            default:
+                m_icons.showFB();
+                break;
+        }
     }
 
     public void TakeDamage(int _Might)

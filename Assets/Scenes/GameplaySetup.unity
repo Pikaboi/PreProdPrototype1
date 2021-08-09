@@ -1870,6 +1870,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6760369281798240013, guid: 33e02c162059b0e439f33fab58696076, type: 3}
+--- !u!114 &637718517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4117301271065759231, guid: 9b8ee3c6c36dbdb429d8920e84a186a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 76608484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a362736e25dfba4b9763952bd42ebf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &641880820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5203,7 +5215,7 @@ PrefabInstance:
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: text
       value: 
-      objectReference: {fileID: 1425467524}
+      objectReference: {fileID: 637718517}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: LeftArm
       value: 
@@ -5298,18 +5310,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
---- !u!114 &1425467524 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1284669485967006553, guid: 9b8ee3c6c36dbdb429d8920e84a186a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 76608484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1465880039
 PrefabInstance:
   m_ObjectHideFlags: 0
