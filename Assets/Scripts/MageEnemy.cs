@@ -295,7 +295,7 @@ public class MageEnemy : Enemy
         if(m_AttackTimer < 0.0f)
         {
             CurrentState = State.ATTACK;
-            m_AttackTimer = Random.Range(1.0f, 6.0f);
+            m_AttackTimer = Random.Range(5.0f, 8.0f);
         }
     }
 }
