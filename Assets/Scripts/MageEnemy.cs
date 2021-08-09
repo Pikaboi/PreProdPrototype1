@@ -230,12 +230,6 @@ public class MageEnemy : Enemy
     //Idling, strafing around player
     void Idle()
     {
-        //Check if player is too close
-        if (Vector3.Distance(transform.position, m_Player.transform.position) < 8.0f || Vector3.Distance(transform.position, m_Player.transform.position) > 13.0f)
-        {
-            CurrentState = State.BACKWARDS;
-        }
-
         //Move Player
         m_Agent.Move(transform.right * m_Agent.speed * m_IdleMove * Time.deltaTime);
 
@@ -246,7 +240,16 @@ public class MageEnemy : Enemy
         {
             IdleMove();
             m_idleTimer = 4.0f;
-            CurrentState = State.DEFENSE;
+
+            //Check if player is too close
+            if (Vector3.Distance(transform.position, m_Player.transform.position) < 8.0f || Vector3.Distance(transform.position, m_Player.transform.position) > 13.0f)
+            {
+                CurrentState = State.BACKWARDS;
+            }
+            else
+            {
+                CurrentState = State.DEFENSE;
+            }
         }
 
     }
