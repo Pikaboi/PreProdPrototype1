@@ -524,6 +524,7 @@ MonoBehaviour:
   m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
     type: 3}
   m_patrol: {fileID: 0}
+  m_anim: {fileID: 4765878741768862386}
   CurrentState: 0
   m_AttackTimer: 3
 --- !u!82 &7221497583979757901

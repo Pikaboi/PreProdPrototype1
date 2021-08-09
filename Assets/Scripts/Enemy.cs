@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent m_Agent;
     public GameObject m_Player;
 
-    public MeshRenderer[] renderers;
     public Material damage;
     public Material defaultMat;
     public float resetMatTimer = 0.0f;
@@ -45,10 +44,6 @@ public class Enemy : MonoBehaviour
     {
         m_AudioDamage.Play();
         m_Health -= Mathf.Max(_might - m_Defense, 0);
-        foreach(MeshRenderer r in renderers)
-        {
-            r.material = damage;
-        }
         resetMatTimer = 0.5f;
     }
 
@@ -58,10 +53,6 @@ public class Enemy : MonoBehaviour
         
         if(resetMatTimer < 0)
         {
-            foreach (MeshRenderer r in renderers)
-            {
-                r.material = defaultMat;
-            }
         }
     }
 

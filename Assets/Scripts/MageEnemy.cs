@@ -9,6 +9,8 @@ public class MageEnemy : Enemy
     [SerializeField] private Transform m_patrol;
     private Vector3 m_ogPos;
 
+    [SerializeField] private Animator m_anim;
+
     //the states the enemy can be in
     public enum State
     {
@@ -117,10 +119,16 @@ public class MageEnemy : Enemy
 
         if(m_Health < 0)
         {
+            m_anim.SetTrigger("Die");
+        }
+
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death") && m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
             Instantiate(healthDrop, transform.position, transform.rotation);
             healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
             Destroy(gameObject);
         }
+
     }
 
     void DocileLook()
@@ -204,6 +212,7 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
+        m_anim.SetTrigger("Cast");
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
         newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
