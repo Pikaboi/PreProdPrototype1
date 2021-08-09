@@ -8,7 +8,7 @@ public class PickupItem : MonoBehaviour
     public bool canInteract = false;
     public PlayerCast m_player;
 
-    public TMPro.TMP_Text prompt;
+    public Image prompt;
     // Start is called before the first frame update
     virtual public void Start()
     {

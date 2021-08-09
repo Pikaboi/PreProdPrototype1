@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthPickup : PickupItem
 {
@@ -8,7 +9,7 @@ public class HealthPickup : PickupItem
     // Start is called before the first frame update
     override public void Start()
     {
-        prompt = GameObject.FindGameObjectWithTag("CollectionPrompt").GetComponent<TMPro.TMP_Text>();
+        prompt = GameObject.FindGameObjectWithTag("CollectionPrompt").GetComponent<Image>();
     }
 
     // Update is called once per frame
