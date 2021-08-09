@@ -9694,6 +9694,11 @@ PrefabInstance:
       propertyPath: m_lsMaxCooldown
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6777435496919595391, guid: 2ff3436274ebdb244bc854308559ec39,
+        type: 3}
+      propertyPath: MinDistance
+      value: 1.4390182
+      objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496988, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_Name
@@ -9707,17 +9712,17 @@ PrefabInstance:
     - target: {fileID: 7159063377770496990, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -313.97
+      value: -53.9
       objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496990, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.68
+      value: 3.953
       objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496990, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -154.08
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 7159063377770496990, guid: 2ff3436274ebdb244bc854308559ec39,
         type: 3}
