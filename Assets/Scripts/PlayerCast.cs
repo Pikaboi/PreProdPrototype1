@@ -93,6 +93,7 @@ public class PlayerCast : MonoBehaviour
             //You wont pull it up until a wall has been removed
             if(CurrentWall == null)
             {
+                m_anim.SetTrigger("LARM0");
                 CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5, transform.rotation.normalized);
             }
         }
@@ -125,7 +126,7 @@ public class PlayerCast : MonoBehaviour
 
                 if (m_fbcooldown < 0)
                 {
-                    m_anim.SetBool("RARM", true);
+                    m_anim.SetTrigger("RARM0");
                     GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
                     newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * (1 + m_FireballSize)));
 
@@ -137,7 +138,7 @@ public class PlayerCast : MonoBehaviour
 
                 if (m_lscooldown < 0)
                 {
-                    m_anim.SetBool("RARM", true);
+                    m_anim.SetTrigger("RARM0");
                     GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
                     newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
@@ -147,7 +148,7 @@ public class PlayerCast : MonoBehaviour
             case SpellType.Healing:
                 if (HealCount > 0 && m_Health != m_MaxHealth)
                 {
-                    m_anim.SetBool("RARM", true);
+                    m_anim.SetTrigger("RARM0");
                     HealCount--;
                     m_Health += 20;
                     m_Health = Mathf.Min(m_MaxHealth, m_Health);

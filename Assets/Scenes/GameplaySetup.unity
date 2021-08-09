@@ -5217,6 +5217,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 637718517}
     - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
+      propertyPath: m_anim
+      value: 
+      objectReference: {fileID: 1550352768}
+    - target: {fileID: 1500568765, guid: 2ff3436274ebdb244bc854308559ec39, type: 3}
       propertyPath: LeftArm
       value: 
       objectReference: {fileID: 1953581704}

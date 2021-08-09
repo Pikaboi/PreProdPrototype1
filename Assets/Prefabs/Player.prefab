@@ -259,11 +259,12 @@ MonoBehaviour:
   LobShot: {fileID: 5144598363566581514, guid: 5abd78a7aab68ec4284577e3536c3b6d, type: 3}
   Camera: {fileID: 7159063378308968977}
   Wall: {fileID: 4546654712033546292, guid: 4d5fcdf773f322040aeea3b6c30c736f, type: 3}
-  text: {fileID: 0}
+  m_icons: {fileID: 0}
   LeftArm: {fileID: 0}
   RightArm: {fileID: 0}
   m_AudioHeal: {fileID: 9020853371220961991}
   m_AudioDamage: {fileID: 6777435496919595391}
+  m_anim: {fileID: 0}
   currentSpell: 0
   HealCount: 3
   CurrentWall: {fileID: 0}
@@ -273,6 +274,8 @@ MonoBehaviour:
   m_Defense: 6
   m_fbcooldown: 0
   m_lscooldown: 0
+  m_fbMaxCooldown: 0
+  m_lsMaxCooldown: 0
 --- !u!114 &7159063378734096226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,27 +630,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.227
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.804
+      value: -4.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.525
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7618869
+      value: 0.99886227
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6477101
+      value: 0.04768764
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
@@ -662,7 +665,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -80.73801
+      value: 5.4670005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 208865928470aa24bbd9b2bf0e601b47,
         type: 3}
