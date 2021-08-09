@@ -54,8 +54,8 @@ public class MageEnemy : Enemy
         m_HPBar.maxValue = m_Maxhealth;
         m_HPBar.value = m_Health;
 
-        renderers = GetComponentsInChildren<MeshRenderer>();
-        defaultMat = renderers[0].material;
+        //renderers = GetComponentsInChildren<MeshRenderer>();
+        //defaultMat = renderers[0].material;
 
         CurrentState = State.DOCILE;
         m_Agent.destination = m_patrol.position;
@@ -119,10 +119,11 @@ public class MageEnemy : Enemy
 
         if(m_Health < 0)
         {
-            m_anim.SetTrigger("Die");
+            Debug.Log("ye");
+            m_anim.SetBool("Die", true);
         }
 
-        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death") && m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             Instantiate(healthDrop, transform.position, transform.rotation);
             healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);

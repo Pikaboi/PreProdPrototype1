@@ -19,8 +19,8 @@ public class EnemySentry : Enemy
         m_HPBar.maxValue = m_Maxhealth;
         m_HPBar.value = m_Health;
 
-        renderers = GetComponentsInChildren<MeshRenderer>();
-        defaultMat = renderers[0].material;
+        //renderers = GetComponentsInChildren<MeshRenderer>();
+        //defaultMat = renderers[0].material;
     }
 
     // Update is called once per frame
