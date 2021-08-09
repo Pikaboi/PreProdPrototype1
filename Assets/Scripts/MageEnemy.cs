@@ -40,6 +40,8 @@ public class MageEnemy : Enemy
 
     private Vector3 currdest;
 
+    float m_backwardsTime = 0.0f;
+
     // Start is called before the first frame update
     override public void Start()
     {
@@ -173,6 +175,8 @@ public class MageEnemy : Enemy
     //Move the enemy back to keep distance from player
     void MoveBack()
     {
+        m_backwardsTime += Time.deltaTime;
+
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 8.0f){
             m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
         } else if (Vector3.Distance(transform.position, m_Player.transform.position) > 13.0f)
@@ -183,6 +187,13 @@ public class MageEnemy : Enemy
         //return to idle once its at a safe distance
         if(Vector3.Distance(transform.position, m_Player.transform.position) > 6.0f && Vector3.Distance(transform.position, m_Player.transform.position) < 10.0f)
         {
+            m_backwardsTime = 0.0f;
+            CurrentState = State.IDLE;
+            IdleMove();
+        } else if (m_backwardsTime > 3.0f)
+        {
+            m_backwardsTime = 0.0f;
+            //I kinda blanked on how || and && interacted so im playing it safe
             CurrentState = State.IDLE;
             IdleMove();
         }
@@ -242,7 +253,7 @@ public class MageEnemy : Enemy
             m_idleTimer = 4.0f;
 
             //Check if player is too close
-            if (Vector3.Distance(transform.position, m_Player.transform.position) < 8.0f || Vector3.Distance(transform.position, m_Player.transform.position) > 13.0f)
+            if (Vector3.Distance(transform.position, m_Player.transform.position) < 5.0f || Vector3.Distance(transform.position, m_Player.transform.position) > 16.0f)
             {
                 CurrentState = State.BACKWARDS;
             }
