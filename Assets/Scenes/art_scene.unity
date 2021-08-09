@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1002,10 +1002,12 @@ MonoBehaviour:
   m_Offense: 0
   m_HPBar: {fileID: 0}
   healthDrop: {fileID: 0}
+  m_AudioDamage: {fileID: 0}
   m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
     type: 3}
   m_patrol: {fileID: 0}
   CurrentState: 0
+  m_AttackTimer: 3
 --- !u!1001 &43574660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12908,7 +12910,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 9.1835e-41, w: 3.923636e-39}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -19845,7 +19847,7 @@ GameObject:
   - component: {fileID: 874333792}
   - component: {fileID: 874333791}
   m_Layer: 0
-  m_Name: firle ball
+  m_Name: FireballParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24581,7 +24583,7 @@ Transform:
   m_GameObject: {fileID: 874333790}
   m_LocalRotation: {x: 0.02152466, y: -0.61742395, z: 0.7834241, w: 0.067609504}
   m_LocalPosition: {x: -93.57, y: 10.88, z: -7.63}
-  m_LocalScale: {x: 0.95912737, y: 1, z: 0.92790645}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
