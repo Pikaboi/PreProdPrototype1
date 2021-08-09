@@ -19,11 +19,17 @@ public class LobShot : MonoBehaviour
     private bool hashit = false;
 
     public GameObject m_Particle;
+    public GameObject m_ExplodeParticle;
+
+    private ParticleSystem m_Main;
+    private ParticleSystem m_Explode;
 
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        m_Main = m_Particle.GetComponent<ParticleSystem>();
+        m_Explode = m_ExplodeParticle.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class LobShot : MonoBehaviour
             m_LobRelease.Play();
         }
 
-        if(hashit && !m_LobExplode.isPlaying && !m_LobRelease.isPlaying)
+        if(hashit && !m_LobExplode.isPlaying && !m_LobRelease.isPlaying && !m_Explode.isPlaying)
         {
             Destroy(gameObject);
         }
@@ -65,6 +71,8 @@ public class LobShot : MonoBehaviour
     {
         //Check Radius of explosion
         Collider[] hits = Physics.OverlapSphere(transform.position, m_Radius);
+
+        m_ExplodeParticle.GetComponent<ParticleSystem>().Play();
 
         m_LobExplode.Play();
 
