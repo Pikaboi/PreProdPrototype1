@@ -19,7 +19,7 @@ public class DefenseCoolDownBar : MonoBehaviour
     void Update()
     {
         if (m_Player.CurrentWall != null) {
-            int cd = (int)m_Player.CurrentWall.GetComponent<WallSpell>().GetTimer();
+            int cd = (int)m_Player.CurrentWall.GetComponent<WallSpell>().GetTimer() + 1;
             text.text = cd.ToString();
         } else
         {
