@@ -29,10 +29,11 @@ public class CooldownBar : MonoBehaviour
                 m_fireballslider.value = m_Player.getFireballSize();
 
                 float cd = Mathf.Round(m_Player.m_fbcooldown * 100.0f) / 100.0f;
+                int cdi = (int)cd + 1;
 
                 if (cd > 0)
                 {
-                    text.text = cd.ToString();
+                    text.text = cdi.ToString();
                     m_fireballslider.gameObject.SetActive(false);
                 } else
                 {
@@ -42,10 +43,11 @@ public class CooldownBar : MonoBehaviour
                 break;
             case PlayerCast.SpellType.LobShot:
                 m_fireballslider.gameObject.SetActive(false);
-                float cd2 = Mathf.Round(m_Player.m_lscooldown * 100.0f) / 100.0f;
+                float cd2 = Mathf.RoundToInt(m_Player.m_lscooldown * 100.0f) / 100.0f;
+                int cdi2 = (int)cd2 + 1;
                 if (cd2 > 0)
                 {
-                    text.text = cd2.ToString();
+                    text.text = cdi2.ToString();
                 }
                 else
                 {
