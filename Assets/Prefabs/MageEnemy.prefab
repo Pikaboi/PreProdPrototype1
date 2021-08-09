@@ -401,6 +401,25 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &4022689467770305415
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7407119114945833503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f74856313bac6c54a9df3d9f5f4030fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7640979394775039305
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +433,6 @@ GameObject:
   - component: {fileID: 7640979394775039311}
   - component: {fileID: 7640979394775039296}
   - component: {fileID: 7221497583979757901}
-  - component: {fileID: 8997197585340795424}
   m_Layer: 0
   m_Name: MageEnemy
   m_TagString: Enemy
@@ -604,25 +622,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &8997197585340795424
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640979394775039305}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f74856313bac6c54a9df3d9f5f4030fb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7640979395340343118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,6 +711,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70912d6ed8a5ed74d9eaf3fe57c79a81, type: 3}
+--- !u!1 &7407119114945833503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 70912d6ed8a5ed74d9eaf3fe57c79a81,
+    type: 3}
+  m_PrefabInstance: {fileID: 7640979395340343118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7890464033905209509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 70912d6ed8a5ed74d9eaf3fe57c79a81,
