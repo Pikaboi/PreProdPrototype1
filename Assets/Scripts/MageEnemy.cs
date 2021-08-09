@@ -173,7 +173,7 @@ public class MageEnemy : Enemy
     //Move the enemy back to keep distance from player
     void MoveBack()
     {
-        if (Vector3.Distance(transform.position, m_Player.transform.position) < 6.0f){
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < 5.0f){
             m_Agent.Move(transform.forward * -1 * m_Speed * Time.deltaTime);
         } else if (Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
         {
@@ -231,7 +231,7 @@ public class MageEnemy : Enemy
     void Idle()
     {
         //Check if player is too close
-        if (Vector3.Distance(transform.position, m_Player.transform.position) < 5.0f)
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < 5.0f || Vector3.Distance(transform.position, m_Player.transform.position) > 10.0f)
         {
             CurrentState = State.BACKWARDS;
         }
