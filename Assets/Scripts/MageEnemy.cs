@@ -9,6 +9,8 @@ public class MageEnemy : Enemy
     [SerializeField] private Transform m_patrol;
     private Vector3 m_ogPos;
 
+    [SerializeField] private Animator m_anim;
+
     //the states the enemy can be in
     public enum State
     {
@@ -52,8 +54,8 @@ public class MageEnemy : Enemy
         m_HPBar.maxValue = m_Maxhealth;
         m_HPBar.value = m_Health;
 
-        renderers = GetComponentsInChildren<MeshRenderer>();
-        defaultMat = renderers[0].material;
+        //renderers = GetComponentsInChildren<MeshRenderer>();
+        //defaultMat = renderers[0].material;
 
         CurrentState = State.DOCILE;
         m_Agent.destination = m_patrol.position;
@@ -117,10 +119,17 @@ public class MageEnemy : Enemy
 
         if(m_Health < 0)
         {
+            Debug.Log("ye");
+            m_anim.SetBool("Die", true);
+        }
+
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
             Instantiate(healthDrop, transform.position, transform.rotation);
             healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
             Destroy(gameObject);
         }
+
     }
 
     void DocileLook()
@@ -204,6 +213,7 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
+        m_anim.SetTrigger("Cast");
         GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
         newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
 
@@ -285,7 +295,7 @@ public class MageEnemy : Enemy
         if(m_AttackTimer < 0.0f)
         {
             CurrentState = State.ATTACK;
-            m_AttackTimer = Random.Range(1.0f, 6.0f);
+            m_AttackTimer = Random.Range(5.0f, 8.0f);
         }
     }
 }

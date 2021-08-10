@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -518,27 +518,28 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 119391525}
+  - component: {fileID: 119391526}
   - component: {fileID: 119391524}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &119391524
-MonoBehaviour:
+--- !u!65 &119391524
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119391523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d2b50f3f7a29242b07ab24454029a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &119391525
 Transform:
   m_ObjectHideFlags: 0
@@ -547,12 +548,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119391523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 316.63843, y: 215.49455, z: -37.84785}
+  m_LocalPosition: {x: -326.21, y: 1.805, z: -155.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &119391526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119391523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4340ad3b9f4c1694a9c479f04b425a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &126695592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5968,8 +5981,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 4410974878444225754, guid: 7869e939385c7084ba02c107479c88bf,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 0fca7dc8efe9676499f5ab86778a28a3, type: 2}
     - target: {fileID: 6959969253919843750, guid: dd4b1438222caae49b9cab5f4449f5c9,
         type: 3}
       propertyPath: m_Name
