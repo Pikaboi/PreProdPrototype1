@@ -103,9 +103,9 @@ public class PlayerCast : MonoBehaviour
     {
         if (m_fbcooldown < 0)
         {
-            m_FireballSize += Time.deltaTime * 2.0f;
+            m_FireballSize += Time.deltaTime * 1.3f;
 
-            m_FireballSize = Mathf.Min(m_FireballSize, 1.5f);
+            m_FireballSize = Mathf.Min(m_FireballSize, 1.0f);
 
         }
 

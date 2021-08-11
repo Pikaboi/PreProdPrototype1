@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 4142299098401156824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.92, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.667, y: 0.667, z: 0.667}
   m_Children:
   - {fileID: 6014083772787294065}
   - {fileID: 4537058214320038708}
@@ -76,7 +76,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Aimer: {fileID: 1693392528}
   m_Agent: {fileID: 0}
   m_Player: {fileID: 0}
-  renderers: []
   damage: {fileID: 2100000, guid: fc10f4fdddbb00c478b34dd2ad8c38f3, type: 2}
   defaultMat: {fileID: 0}
   resetMatTimer: 0
@@ -109,6 +108,7 @@ MonoBehaviour:
   m_AudioDamage: {fileID: -2821782479073557190}
   m_enemyFireball: {fileID: 3935033593153494838, guid: 15ffd0e9045e3c84d8e82ba432d7733e,
     type: 3}
+  m_AttackTimer: 3
 --- !u!82 &-2821782479073557190
 AudioSource:
   m_ObjectHideFlags: 0
