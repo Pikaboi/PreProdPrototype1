@@ -90,44 +90,49 @@ public class MageEnemy : Enemy
             CurrentState = State.FINISHER;
         }
 
-        //Control all the States
-        switch (CurrentState)
+        if (m_Health < 0)
         {
-            case State.IDLE:
-                Idle();
-                break;
-            case State.ATTACK:
-                Attack();
-                break;
-            case State.DEFENSE:
-                Defend();
-                break;
-            case State.FINISHER:
-                LargeAttack();
-                break;
-            case State.BACKWARDS:
-                MoveBack();
-                break;
-            case State.DOCILE:
-                Docile();
-                break;
-            default:
-                //If something odd happens, default to Idle
-                Idle();
-                break;
-        }
-
-        if(m_Health < 0)
-        {
-            Debug.Log("ye");
             m_anim.SetBool("Die", true);
+        }
+        else
+        {
+            //So it doesnt do anything while dying
+            //Control all the States
+            switch (CurrentState)
+            {
+                case State.IDLE:
+                    Idle();
+                    break;
+                case State.ATTACK:
+                    Attack();
+                    break;
+                case State.DEFENSE:
+                    Defend();
+                    break;
+                case State.FINISHER:
+                    LargeAttack();
+                    break;
+                case State.BACKWARDS:
+                    MoveBack();
+                    break;
+                case State.DOCILE:
+                    Docile();
+                    break;
+                default:
+                    //If something odd happens, default to Idle
+                    Idle();
+                    break;
+            }
         }
 
         if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
-            Instantiate(healthDrop, transform.position, transform.rotation);
-            healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
-            Destroy(gameObject);
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                Instantiate(healthDrop, transform.position, transform.rotation);
+                healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
+                Destroy(gameObject);
+            }
         }
 
     }
