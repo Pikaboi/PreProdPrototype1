@@ -70,10 +70,20 @@ public class EnemySentry : Enemy
         {
             //uses the same code as player projectiles
             //Use set size instead
-            m_anim.SetTrigger("Cast");
-            GameObject newFireball = Instantiate(m_enemyFireball, m_Aimer.transform.position + m_Aimer.transform.forward * 1.5f, m_Aimer.transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
-            m_AttackTimer = Random.Range(6.0f, 9.0f);
+            if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+            {
+                m_anim.SetTrigger("Cast");
+            }
+
+            if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+            {
+                if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+                {
+                    GameObject newFireball = Instantiate(m_enemyFireball, m_Aimer.transform.position + m_Aimer.transform.forward * 1.5f, m_Aimer.transform.rotation);
+                    newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+                    m_AttackTimer = Random.Range(6.0f, 9.0f);
+                }
+            }
         }
     }
 }
