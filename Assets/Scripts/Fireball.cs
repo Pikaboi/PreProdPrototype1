@@ -12,6 +12,7 @@ public class Fireball : MonoBehaviour
     private int m_Might = 0;
 
     [SerializeField] private AudioSource m_AudioFire;
+    [SerializeField] private ParticleSystem m_particle;
 
     private bool hashit = false;
 
@@ -78,5 +79,6 @@ public class Fireball : MonoBehaviour
     {
         m_rb.detectCollisions = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        m_particle.Stop();
     }
 }

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 20
   m_AudioFire: {fileID: 7214826236373648841}
+  m_particle: {fileID: 3542001887766587623}
 --- !u!82 &7214826236373648841
 AudioSource:
   m_ObjectHideFlags: 0
