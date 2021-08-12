@@ -80,7 +80,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.FINISHER && CurrentState != State.DOCILE)
+        if (CurrentState != State.FINISHER && CurrentState != State.DOCILE && CurrentState != State.ATTACK)
         {
             AttackCooldown();
         }
@@ -218,11 +218,24 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
-        m_anim.SetTrigger("Cast");
-        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+        if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+        {
+            m_anim.SetTrigger("Cast");
+        }
 
-        CurrentState = State.IDLE;
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+        {
+            Debug.Log(m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+            {
+                GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
+                newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+
+                CurrentState = State.IDLE;
+            }
+        }
+
+        
     }
 
     //Strong attack used at low health
