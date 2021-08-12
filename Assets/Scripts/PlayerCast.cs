@@ -56,6 +56,7 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private float m_lsMaxCooldown = 0;
 
     private bool shooting = false;
+    private bool canWall = false;
 
     // Start is called before the first frame update
     void Start()
@@ -90,11 +91,8 @@ public class PlayerCast : MonoBehaviour
 
             if (Input.GetMouseButtonUp(1))
             {
-                if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
-                {
-                    m_anim.SetTrigger("RARM0");
-                    shooting = true;
-                }
+                m_anim.SetTrigger("RARM0");
+                shooting = true;
             }
         } else
         {
@@ -113,16 +111,26 @@ public class PlayerCast : MonoBehaviour
             }
         }
 
-
-        if (Input.GetMouseButton(0))
+        if (canWall)
         {
-            //You wont pull it up until a wall has been removed
-            if(CurrentWall == null)
+            if (Input.GetMouseButton(0))
             {
-                m_anim.SetTrigger("LARM0");
-                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5 + transform.up * -2, transform.rotation.normalized);
-                CurrentWall.transform.RotateAround(transform.position, Vector3.up, 0.0f);
-                CurrentWall.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+                //You wont pull it up until a wall has been removed
+                if (CurrentWall == null)
+                {
+                    m_anim.SetTrigger("LARM0");
+                    CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5 + transform.up * -2, transform.rotation.normalized);
+                    CurrentWall.transform.RotateAround(transform.position, Vector3.up, 0.0f);
+                    CurrentWall.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+                    canWall = false;
+                }
+            }
+        }
+        else
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerArms"))
+            {
+                canWall = true;
             }
         }
     }
