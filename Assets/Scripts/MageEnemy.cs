@@ -225,7 +225,6 @@ public class MageEnemy : Enemy
 
         if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
         {
-            Debug.Log(m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
             {
                 GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
@@ -245,11 +244,22 @@ public class MageEnemy : Enemy
 
         if(m_ChargeTimer < 0.0f)
         {
-            GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.5f, "EnemyProjectile", m_Attack * 3);
-            m_finisherReady = false;
+            if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+            {
+                m_anim.SetTrigger("Cast");
+            }
+        }
 
-            CurrentState = State.IDLE;
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+            {
+                GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
+                newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.5f, "EnemyProjectile", m_Attack * 3);
+                m_finisherReady = false;
+
+                CurrentState = State.IDLE;
+            }
         }
     }
 
