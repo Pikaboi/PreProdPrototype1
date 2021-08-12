@@ -96,6 +96,7 @@ public class PlayerCast : MonoBehaviour
                 m_anim.SetTrigger("LARM0");
                 CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5 + transform.up * -2, transform.rotation.normalized);
                 CurrentWall.transform.RotateAround(transform.position, Vector3.up, 0.0f);
+                CurrentWall.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
             }
         }
     }
