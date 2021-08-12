@@ -80,7 +80,7 @@ public class MageEnemy : Enemy
         //Decrease Attack Timer
         //want it seperate too idling, and moving back
         //Otherwise AI will be giga stupid
-        if (CurrentState != State.FINISHER && CurrentState != State.DOCILE)
+        if (CurrentState != State.FINISHER && CurrentState != State.DOCILE && CurrentState != State.ATTACK)
         {
             AttackCooldown();
         }
@@ -90,44 +90,49 @@ public class MageEnemy : Enemy
             CurrentState = State.FINISHER;
         }
 
-        //Control all the States
-        switch (CurrentState)
+        if (m_Health < 0)
         {
-            case State.IDLE:
-                Idle();
-                break;
-            case State.ATTACK:
-                Attack();
-                break;
-            case State.DEFENSE:
-                Defend();
-                break;
-            case State.FINISHER:
-                LargeAttack();
-                break;
-            case State.BACKWARDS:
-                MoveBack();
-                break;
-            case State.DOCILE:
-                Docile();
-                break;
-            default:
-                //If something odd happens, default to Idle
-                Idle();
-                break;
-        }
-
-        if(m_Health < 0)
-        {
-            Debug.Log("ye");
             m_anim.SetBool("Die", true);
+        }
+        else
+        {
+            //So it doesnt do anything while dying
+            //Control all the States
+            switch (CurrentState)
+            {
+                case State.IDLE:
+                    Idle();
+                    break;
+                case State.ATTACK:
+                    Attack();
+                    break;
+                case State.DEFENSE:
+                    Defend();
+                    break;
+                case State.FINISHER:
+                    LargeAttack();
+                    break;
+                case State.BACKWARDS:
+                    MoveBack();
+                    break;
+                case State.DOCILE:
+                    Docile();
+                    break;
+                default:
+                    //If something odd happens, default to Idle
+                    Idle();
+                    break;
+            }
         }
 
         if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
-            Instantiate(healthDrop, transform.position, transform.rotation);
-            healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
-            Destroy(gameObject);
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                Instantiate(healthDrop, transform.position, transform.rotation);
+                healthDrop.GetComponentInChildren<HealthPickup>().SetHealthCount(1);
+                Destroy(gameObject);
+            }
         }
 
     }
@@ -213,11 +218,23 @@ public class MageEnemy : Enemy
     {
         //uses the same code as player projectiles
         //Use set size instead
-        m_anim.SetTrigger("Cast");
-        GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
-        newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+        if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+        {
+            m_anim.SetTrigger("Cast");
+        }
 
-        CurrentState = State.IDLE;
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+            {
+                GameObject newFireball = Instantiate(m_enemyFireball, transform.position + m_Aimer.transform.forward * 1.5f, transform.rotation);
+                newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.25f, "EnemyProjectile", m_Attack);
+
+                CurrentState = State.IDLE;
+            }
+        }
+
+        
     }
 
     //Strong attack used at low health
@@ -227,11 +244,22 @@ public class MageEnemy : Enemy
 
         if(m_ChargeTimer < 0.0f)
         {
-            GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
-            newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.5f, "EnemyProjectile", m_Attack * 3);
-            m_finisherReady = false;
+            if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+            {
+                m_anim.SetTrigger("Cast");
+            }
+        }
 
-            CurrentState = State.IDLE;
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast"))
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+            {
+                GameObject newFireball = Instantiate(m_enemyFireball, transform.position + transform.forward * 2.5f, transform.rotation);
+                newFireball.GetComponent<Fireball>().SetValues(m_Aimer.transform.forward, 0.5f, "EnemyProjectile", m_Attack * 3);
+                m_finisherReady = false;
+
+                CurrentState = State.IDLE;
+            }
         }
     }
 
@@ -295,7 +323,7 @@ public class MageEnemy : Enemy
         if(m_AttackTimer < 0.0f)
         {
             CurrentState = State.ATTACK;
-            m_AttackTimer = Random.Range(1.0f, 6.0f);
+            m_AttackTimer = Random.Range(5.0f, 8.0f);
         }
     }
 }
