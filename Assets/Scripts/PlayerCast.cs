@@ -74,6 +74,7 @@ public class PlayerCast : MonoBehaviour
         m_fbcooldown -= Time.deltaTime;
         m_lscooldown -= Time.deltaTime;
 
+        //Prevent this from happening during a cast
         if (shooting == false)
         {
             //Show button presses
@@ -95,14 +96,20 @@ public class PlayerCast : MonoBehaviour
                     shooting = true;
                 }
             }
+        } else
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerArms"))
+            {
+                shooting = false;
+            }
         }
 
+        //Now cast on Animation time
         if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("RArm"))
         {
             if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
             {
                 SpellActivate();
-                shooting = false;
             }
         }
 
@@ -147,7 +154,6 @@ public class PlayerCast : MonoBehaviour
 
                 if (m_fbcooldown < 0)
                 {
-                    m_anim.SetTrigger("RARM0");
                     GameObject newFireball = Instantiate(Fireball, RightArm.transform.position + transform.forward * m_FireballSize, transform.rotation);
                     newFireball.GetComponent<Fireball>().SetValues(Camera.transform.forward, m_FireballSize, "PlayerProjectile", Mathf.RoundToInt(m_Attack * (1 + m_FireballSize)));
 
@@ -159,7 +165,6 @@ public class PlayerCast : MonoBehaviour
 
                 if (m_lscooldown < 0)
                 {
-                    m_anim.SetTrigger("RARM0");
                     GameObject newLobShot = Instantiate(LobShot, RightArm.transform.position, transform.rotation);
                     newLobShot.GetComponent<LobShot>().setValues(m_lobSpeed, "PlayerProjectile", m_Attack * 3);
 
@@ -169,7 +174,6 @@ public class PlayerCast : MonoBehaviour
             case SpellType.Healing:
                 if (HealCount > 0 && m_Health != m_MaxHealth)
                 {
-                    m_anim.SetTrigger("RARM0");
                     HealCount--;
                     m_Health += 20;
                     m_Health = Mathf.Min(m_MaxHealth, m_Health);
