@@ -55,6 +55,8 @@ public class PlayerCast : MonoBehaviour
     [SerializeField] private float m_fbMaxCooldown = 0;
     [SerializeField] private float m_lsMaxCooldown = 0;
 
+    private bool shooting = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,21 +74,27 @@ public class PlayerCast : MonoBehaviour
         m_fbcooldown -= Time.deltaTime;
         m_lscooldown -= Time.deltaTime;
 
-        //Show button presses
-        if (Input.GetKeyDown(KeyCode.E))
+        if (shooting == false)
         {
-            SpellCycle();
-        }
+            //Show button presses
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SpellCycle();
+            }
 
-        if (Input.GetMouseButton(1))
-        {
-            SpellCharge();
-        }
+            if (Input.GetMouseButton(1))
+            {
+                SpellCharge();
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            m_anim.SetTrigger("RARM0");
-            //SpellActivate();
+            if (Input.GetMouseButtonUp(1))
+            {
+                if (!m_anim.GetCurrentAnimatorStateInfo(0).IsName("Cast") && !m_anim.GetCurrentAnimatorStateInfo(0).IsName("CastReverse"))
+                {
+                    m_anim.SetTrigger("RARM0");
+                    shooting = true;
+                }
+            }
         }
 
         if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("RArm"))
@@ -94,11 +102,12 @@ public class PlayerCast : MonoBehaviour
             if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
             {
                 SpellActivate();
+                shooting = false;
             }
         }
 
 
-                if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             //You wont pull it up until a wall has been removed
             if(CurrentWall == null)
