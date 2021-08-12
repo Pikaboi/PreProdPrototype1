@@ -94,11 +94,8 @@ public class PlayerCast : MonoBehaviour
             if(CurrentWall == null)
             {
                 m_anim.SetTrigger("LARM0");
-                Quaternion rot = transform.rotation;
-                rot.y = rot.y - 2.0f;
-                Debug.Log(rot);
-
-                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5 + transform.up * -2, rot.normalized);
+                CurrentWall = Instantiate(Wall, transform.position + transform.forward * 5 + transform.up * -2, transform.rotation.normalized);
+                CurrentWall.transform.RotateAround(transform.position, Vector3.up, 0.0f);
             }
         }
     }
