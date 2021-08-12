@@ -85,10 +85,20 @@ public class PlayerCast : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            SpellActivate();
+            m_anim.SetTrigger("RARM0");
+            //SpellActivate();
         }
 
-        if (Input.GetMouseButton(0))
+        if (m_anim.GetCurrentAnimatorStateInfo(0).IsName("RArm"))
+        {
+            if (m_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+            {
+                SpellActivate();
+            }
+        }
+
+
+                if (Input.GetMouseButton(0))
         {
             //You wont pull it up until a wall has been removed
             if(CurrentWall == null)
