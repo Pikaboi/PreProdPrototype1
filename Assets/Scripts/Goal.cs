@@ -19,7 +19,8 @@ public class Goal : MonoBehaviour
             prompt.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && inZone)
+        //Because the prompt isnt working for some reason
+        if (inZone)
         {
             SceneManager.LoadScene("EndScreen");
         }
