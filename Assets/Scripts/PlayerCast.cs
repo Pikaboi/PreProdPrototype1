@@ -91,8 +91,7 @@ public class PlayerCast : MonoBehaviour
 
             if (Input.GetMouseButtonUp(1))
             {
-                m_anim.SetTrigger("RARM0");
-                shooting = true;
+                canAnimateRight();
             }
         } else
         {
@@ -150,6 +149,40 @@ public class PlayerCast : MonoBehaviour
             m_lobSpeed += Time.deltaTime * 5.0f;
 
             m_lobSpeed = Mathf.Min(m_lobSpeed, 10.0f);
+        }
+    }
+
+    void canAnimateRight()
+    {
+        switch (currentSpell)
+        {
+            case SpellType.Fireball:
+
+                if (m_fbcooldown < 0)
+                {
+                    m_anim.SetTrigger("RARM0");
+                    shooting = true;
+                }
+
+                break;
+            case SpellType.LobShot:
+
+                if (m_lscooldown < 0)
+                {
+                    m_anim.SetTrigger("RARM0");
+                    shooting = true;
+                }
+                break;
+            case SpellType.Healing:
+                if (HealCount > 0 && m_Health != m_MaxHealth)
+                {
+                    m_anim.SetTrigger("RARM0");
+                    shooting = true;
+                }
+                break;
+            default:
+                //Prevents anything bad happening
+                break;
         }
     }
 
